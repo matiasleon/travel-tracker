@@ -1,0 +1,47 @@
+.deleteButton {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  background-color: white;
+  color: rgb(220 38 38);
+  border: 1px solid rgb(254 202 202);
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.deleteButton:hover {
+  background-color: rgb(254 242 242);
+}
+
+.deleteButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pageContainer {
+  width: 100%;
+  margin: 0 auto;
+  padding: 2.5rem;
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+  border: 1px solid rgb(229 231 235);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.contentGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100%;
+  min-height: calc(100vh - 64px);
+}
+
+@media (min-width: 1024px) {
+  .contentGrid {
+    flex-direction: row;
+    gap: 2rem;
+  }
+}

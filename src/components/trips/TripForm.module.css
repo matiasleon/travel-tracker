@@ -1,0 +1,211 @@
+.form {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(229 231 235);
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.formGroup {
+  margin-bottom: 1rem;
+}
+
+.label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgb(55 65 81);
+  margin-bottom: 0.5rem;
+}
+
+.charCount {
+  font-size: 0.75rem;
+  color: rgb(107 114 128);
+  font-weight: normal;
+}
+
+.input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid rgb(209 213 219);
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+}
+
+.input:focus {
+  outline: none;
+  border-color: rgb(59 130 246);
+  box-shadow: 0 0 0 2px rgb(191 219 254);
+}
+
+.dateGroup {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 0.625rem;
+  background-color: rgb(37 99 235);
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.submitButton:hover {
+  background-color: rgb(29 78 216);
+}
+
+.submitButton:disabled {
+  background-color: rgb(156 163 175);
+  cursor: not-allowed;
+}
+
+.error {
+  color: rgb(239 68 68);
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.travelers,
+.citiesSection {
+  margin-top: 1rem;
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgb(17 24 39);
+  margin-bottom: 1rem;
+}
+
+.citiesList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.cityItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background-color: rgb(249 250 251);
+  border-radius: 0.375rem;
+  border: 1px solid rgb(229 231 235);
+}
+
+.cityInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.cityName {
+  font-weight: 500;
+  color: rgb(17 24 39);
+}
+
+.cityDate {
+  font-size: 0.875rem;
+  color: rgb(107 114 128);
+}
+
+.addCityForm {
+  padding: 1rem;
+  background-color: rgb(249 250 251);
+  border-radius: 0.375rem;
+  border: 1px solid rgb(229 231 235);
+  margin-top: 1rem;
+}
+
+.addCityButtons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.addCityButton {
+  width: 100%;
+  padding: 0.625rem;
+  background-color: rgb(219 234 254);
+  color: rgb(37 99 235);
+  border: none;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 1rem;
+}
+
+.addCityButton:hover {
+  background-color: rgb(191 219 254);
+}
+
+.addButton {
+  padding: 0.5rem 1rem;
+  background-color: rgb(37 99 235);
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.addButton:hover {
+  background-color: rgb(29 78 216);
+}
+
+.cancelButton {
+  padding: 0.5rem 1rem;
+  background-color: rgb(229 231 235);
+  color: rgb(55 65 81);
+  border: none;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cancelButton:hover {
+  background-color: rgb(209 213 219);
+}
+
+.travelersList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.travelerChip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  background-color: rgb(243 244 246);
+  border-radius: 9999px;
+  font-size: 0.875rem;
+}
+
+.removeButton {
+  background: none;
+  border: none;
+  color: rgb(156 163 175);
+  cursor: pointer;
+  padding: 0.25rem;
+  line-height: 1;
+}
+
+.removeButton:hover {
+  color: rgb(239 68 68);
+}

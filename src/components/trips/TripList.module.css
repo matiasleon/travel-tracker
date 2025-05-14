@@ -1,0 +1,59 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.trip {
+  background-color: white;
+  border: 1px solid rgb(229 231 235);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: rgb(17 24 39);
+}
+
+.addButton {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  background-color: rgb(239 246 255);
+  color: rgb(37 99 235);
+  border: 1px solid rgb(191 219 254);
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.addButton:hover {
+  background-color: rgb(219 234 254);
+}
+
+.emptyState {
+  text-align: center;
+  color: rgb(107 114 128);
+  padding: 2rem;
+  border: 2px dashed rgb(229 231 235);
+  border-radius: 0.5rem;
+}
+
+.activities {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}

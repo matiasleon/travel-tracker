@@ -1,0 +1,110 @@
+.container {
+  background-color: white;
+  border: 1px solid rgb(229 231 235);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+  flex: 1;
+}
+
+.link:hover .title {
+  color: rgb(37 99 235);
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: rgb(17 24 39);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.2s;
+}
+
+.addButton {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  background-color: rgb(239 246 255);
+  color: rgb(37 99 235);
+  border: 1px solid rgb(191 219 254);
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.addButton:hover {
+  background-color: rgb(219 234 254);
+}
+
+.activities {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.activity {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border: 1px solid rgb(229 231 235);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.activity:hover {
+  background-color: rgb(249 250 251);
+}
+
+.checkbox {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 1px solid rgb(209 213 219);
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.checkboxCompleted {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  background-color: rgb(236 253 245);
+  border: 1px solid rgb(167 243 208);
+  color: rgb(5 150 105);
+}
+
+.activityText {
+  flex: 1;
+  color: rgb(55 65 81);
+}
+
+.activityCompleted {
+  flex: 1;
+  color: rgb(156 163 175);
+  text-decoration: line-through;
+}
