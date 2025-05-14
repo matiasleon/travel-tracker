@@ -143,19 +143,19 @@ export const TripDetails = () => {
           {isAdmin && (
             <button 
               onClick={() => setShowAddCity(true)}
-              className={`${styles.actionButton} ${styles.primaryButton}`}
+              className={commonStyles.primaryButton}
             >
-              ➕ Agregar Ciudad
+              + Agregar Ciudad
             </button>
           )}
-          <button className={`${styles.actionButton} ${styles.secondaryButton}`}>
+          <button className={commonStyles.secondaryButton}>
             📍 Compartir Viaje
           </button>
-          <button className={`${styles.actionButton} ${styles.secondaryButton}`}>
+          <button className={commonStyles.secondaryButton}>
             📅 Exportar Calendario
           </button>
           {isAdmin && (
-            <button className={`${styles.actionButton} ${styles.dangerButton}`}>
+            <button className={commonStyles.dangerButton}>
               🗑️ Eliminar Viaje
             </button>
           )}

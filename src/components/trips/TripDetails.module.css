@@ -19,6 +19,40 @@
   }
 }
 
+.sidebar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 24px;
+  width: 100%;
+  background: #f8f9fa;
+  border-radius: 12px;
+  margin: -2%;
+}
+
+.sidebar button {
+  flex: 1;
+  min-width: 200px;
+  justify-content: flex-start;
+  padding: 0.75rem 1rem;
+  margin: 2%;
+}
+
+@media (min-width: 1024px) {
+  .sidebar {
+    flex-direction: column;
+    width: 300px;
+    padding: 24px;
+    margin: 0;
+  }
+
+  .sidebar button {
+    width: 100%;
+    min-width: unset;
+  }
+}
+
 .mainContent {
   background: white;
   border-radius: 1rem;

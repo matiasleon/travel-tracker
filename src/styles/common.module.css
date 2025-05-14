@@ -19,16 +19,113 @@
 }
 
 .pageContainer {
-  width: 100%;
-  margin: 0 auto;
-  padding: 2.5rem;
   background-color: white;
-  border-radius: 0.75rem;
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
-  border: 1px solid rgb(229 231 235);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+  width: 100%;
+  min-height: 48px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 640px) {
+  .button {
+    font-size: 0.875rem;
+    padding: 0.875rem 1.25rem;
+    min-height: 40px;
+  }
+}
+
+.primaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+  min-width: 150px;
+  background-color: #4285f4;
+  color: white;
+}
+
+.primaryButton:hover {
+  background-color: #357abd;
+}
+
+.secondaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+  min-width: 150px;
+  background-color: #f8f9fa;
+  color: #3c4043;
+  border: 1px solid #dadce0;
+}
+
+.secondaryButton:hover {
+  background-color: #f1f3f4;
+  border-color: #d2d5d9;
+}
+
+.dangerButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+  min-width: 150px;
+  background-color: #dc2626;
+  color: white;
+}
+
+.dangerButton:hover {
+  background-color: #b91c1c;
+}
+
+.pageContentGrid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 2rem;
+  padding: 2rem;
 }
 
 .contentGrid {

@@ -1,6 +1,8 @@
 export const mockTrips = [
   {
     id: '1',
+    userRole: 'admin',
+    createdBy: 'mock-user-id',
     name: 'Aventura en París',
     destination: 'París, Francia',
     startDate: '2025-06-15',
@@ -36,6 +38,8 @@ export const mockTrips = [
   },
   {
     id: '2',
+    userRole: 'admin',
+    createdBy: 'mock-user-id',
     name: 'Explorando Japón',
     destination: 'Tokio, Japón',
     startDate: '2025-09-10',
@@ -71,6 +75,8 @@ export const mockTrips = [
   },
   {
     id: '3',
+    userRole: 'admin',
+    createdBy: 'mock-user-id',
     name: 'Tango y Cultura',
     destination: 'Buenos Aires, Argentina',
     startDate: '2025-07-05',

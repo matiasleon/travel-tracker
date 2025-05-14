@@ -19,7 +19,9 @@ export const useTrips = () => {
       ...tripData,
       id: Date.now().toString(),
       activities: [],
-      status: 'planning'
+      status: 'planning',
+      userRole: 'admin',
+      createdBy: 'mock-user-id'
     };
     setTrips(prevTrips => [...prevTrips, newTrip]);
     return newTrip.id;

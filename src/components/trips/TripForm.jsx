@@ -4,7 +4,7 @@ import { useAuth } from '../../context/AuthContext';
 import { DateRangePicker } from '../common/DateRangePicker';
 import styles from './TripForm.module.css';
 
-export const TripForm = () => {
+export const TripForm = ({ onSuccess }) => {
   const { user } = useAuth();
   const { createTrip } = useTrips();
   const [formData, setFormData] = useState({
@@ -127,6 +127,10 @@ export const TripForm = () => {
         cities: [],
         notes: []
       });
+
+      if (onSuccess) {
+        onSuccess();
+      }
 
       // Limpiar formulario
       setFormData({
