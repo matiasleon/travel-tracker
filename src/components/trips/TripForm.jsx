@@ -119,7 +119,7 @@ export const TripForm = ({ onSuccess }) => {
         return;
       }
 
-      await createTrip({
+      const tripId = await createTrip({
         ...formData,
         startDate: startDateTime.toISOString(),
         endDate: endDateTime.toISOString(),
@@ -128,7 +128,7 @@ export const TripForm = ({ onSuccess }) => {
         notes: []
       });
 
-      if (onSuccess) {
+      if (tripId && onSuccess) {
         onSuccess();
       }
 

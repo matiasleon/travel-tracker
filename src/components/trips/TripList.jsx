@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { TripItem } from './TripItem';
 import { useTrips } from '../../hooks/useTrips';
 import styles from './TripList.module.css';
 
 export const TripList = () => {
   const { trips, loading } = useTrips();
+
+  useEffect(() => {
+    console.log('TripList re-render:', trips.length, 'viajes');
+  }, [trips]);
 
   if (loading) {
     return <div>Cargando viajes...</div>;

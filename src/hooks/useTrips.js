@@ -1,20 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 import { mockTrips } from '../mocks/trips';
 
 export const useTrips = () => {
-  const [trips, setTrips] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // Mantener todos los viajes en un solo estado
+  const [trips, setTrips] = useState([...mockTrips]);
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    fetchTrips();
-  }, []);
-
-  const fetchTrips = () => {
-    setTrips(mockTrips);
-    setLoading(false);
-  };
-
-  const createTrip = (tripData) => {
+  const createTrip = useCallback((tripData) => {
     const newTrip = {
       ...tripData,
       id: Date.now().toString(),
@@ -23,16 +15,17 @@ export const useTrips = () => {
       userRole: 'admin',
       createdBy: 'mock-user-id'
     };
-    setTrips(prevTrips => [...prevTrips, newTrip]);
+    // Agregar el nuevo viaje manteniendo los mocks
+    setTrips(prev => [...mockTrips, ...prev.filter(t => !mockTrips.find(m => m.id === t.id)), newTrip]);
     return newTrip.id;
-  };
+  }, []);
 
-  const addActivity = (tripId, activityName) => {
+  const addActivity = useCallback((tripId, activityName) => {
     if (!activityName || !tripId) {
       console.log('Error: Actividad o ID de viaje no válidos');
       return;
     }
-    setTrips(prevTrips => prevTrips.map(trip => {
+    setTrips(prev => prev.map(trip => {
       if (trip.id === tripId) {
         return {
           ...trip,
@@ -44,7 +37,7 @@ export const useTrips = () => {
       }
       return trip;
     }));
-  };
+  }, []);
 
   const toggleActivity = (tripId, activityIndex) => {
     setTrips(prevTrips => prevTrips.map(trip => {
@@ -61,28 +54,27 @@ export const useTrips = () => {
   };
 
   const addCity = (tripId, cityData) => {
-    const newCity = {
-      ...cityData,
-      id: Date.now().toString(),
-      completed: false,
-      activities: []
-    };
-
     setTrips(prevTrips => prevTrips.map(trip => {
       if (trip.id === tripId) {
         return {
           ...trip,
-          cities: [...(trip.cities || []), newCity]
+          cities: [...(trip.cities || []), cityData]
         };
       }
       return trip;
     }));
   };
 
-  const deleteTrip = (tripId) => {
-    setTrips(prevTrips => prevTrips.filter(trip => trip.id !== tripId));
+  const deleteTrip = useCallback((tripId) => {
+    // Eliminar manteniendo los mocks
+    setTrips(prev => [
+      ...mockTrips,
+      ...prev
+        .filter(trip => trip.id !== tripId)
+        .filter(trip => !mockTrips.find(m => m.id === trip.id))
+    ]);
     return { success: true, message: 'Viaje eliminado correctamente' };
-  };
+  }, []);
 
   return {
     trips,

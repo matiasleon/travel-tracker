@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { useTrips } from '../hooks/useTrips';
 import { LoginButton } from './auth/LoginButton';
 import { TripForm } from './trips/TripForm';
 import { TripList } from './trips/TripList';
@@ -9,7 +10,12 @@ import commonStyles from '../styles/common.module.css';
 
 export const Home = () => {
   const { user } = useAuth();
+  const { trips } = useTrips();
   const [showCreateForm, setShowCreateForm] = useState(false);
+
+  const handleTripCreated = () => {
+    setShowCreateForm(false);
+  };
 
   return (
     <Layout>
@@ -46,7 +52,7 @@ export const Home = () => {
                     ✕
                   </button>
                 </div>
-                <TripForm onSuccess={() => setShowCreateForm(false)} />
+                <TripForm onSuccess={handleTripCreated} />
               </div>
             </div>
           )}
