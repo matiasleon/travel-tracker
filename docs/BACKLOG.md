@@ -86,11 +86,12 @@
 ~~1. No se refresca al crear viaje nuevo~~ ✅ RESUELTO con sistema de notificaciones
 ~~2. La lista de viajes no se actualiza inmediatamente al crear un nuevo viaje~~ ✅ RESUELTO con UX Optimistic
 3. El estado de los viajes se pierde al recargar la página
-~~4. Falta validación en el formulario de creación~~ ✅ RESUELTO
-8. Advertencias de linting relacionadas con la propiedad `composes` en CSS Modules
-9. Advertencias de linting relacionadas con las directivas `@tailwind` en index.css
+4. Falta validación en el formulario de creación
+5. No se puede crear una ciudad
+6. El formulario de ciudades existe pero no está conectado
+~~7. Las actividades no se pueden agregar aunque existe el componente~~ ✅ RESUELTO
 
-## Mejoras Técnicas 
+## Mejoras Técnicas 🛠️
 
 1. Implementar TypeScript
 2. Agregar tests unitarios

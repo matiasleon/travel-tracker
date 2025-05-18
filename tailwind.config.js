@@ -7,8 +7,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-family-primary)'],
-        display: ['var(--font-family-secondary)'],
+        sans: ['DM Sans', 'var(--font-family-primary)'],
+        display: ['DM Sans', 'var(--font-family-secondary)'],
       },
       fontSize: {
         'xs': 'var(--font-size-xs)',

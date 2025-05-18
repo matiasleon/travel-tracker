@@ -1,5 +1,5 @@
 .header {
-  background-color: #0c4a6e;
+  background-color: var(--color-primary); /* Usando el turquesa como color principal */
   width: 100%;
   position: sticky;
   top: 0;
@@ -38,10 +38,11 @@
 }
 
 .logoText {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-family-secondary);
   font-size: 1.25rem;
   font-weight: 700;
   color: white;
+  margin-left: 0.5rem;
   letter-spacing: -0.03em;
 }
 

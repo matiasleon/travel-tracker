@@ -16,12 +16,14 @@
 .eco-container {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xs);
-  margin-bottom: var(--spacing-md);
-  background-color: var(--background-color-light);
-  border-radius: var(--border-radius-md);
+  gap: var(--spacing-md); /* Aumentado para más espacio en blanco */
+  margin-bottom: var(--spacing-lg);
+  background-color: var(--color-bg-light); /* Usando blanco puro */
+  border-radius: var(--border-radius-lg); /* Bordes más redondeados */
   transition: all var(--transition-normal) var(--transition-timing);
   position: relative;
+  padding: var(--spacing-lg); /* Padding más amplio */
+  box-shadow: var(--box-shadow-sm); /* Sombra sutil */
 }
 
 /* Encabezado con título y botón de acción */
@@ -29,30 +31,33 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: var(--spacing-xs);
+  margin-bottom: var(--spacing-md); /* Más espacio después del encabezado */
+  padding-bottom: var(--spacing-sm); /* Padding inferior */
+  border-bottom: 1px solid var(--border-color-light); /* Línea separadora sutil */
 }
 
 .eco-title {
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-md); /* Tamaño de fuente más grande */
+  font-weight: var(--font-weight-medium); /* Peso medio como en InCheq */
   color: var(--color-text-dark);
   margin: 0;
+  letter-spacing: -0.01em; /* Espaciado de letras ligeramente reducido como en DM Sans */
 }
 
 /* Botón para activar el modo de edición */
 .eco-edit-button {
   background: none;
   border: none;
-  color: var(--color-primary);
+  color: var(--color-primary); /* Color rojo de acento */
   cursor: pointer;
   font-size: var(--font-size-sm);
-  padding: 0;
+  padding: var(--spacing-xs);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
-  border-radius: var(--border-radius-sm);
+  width: 32px; /* Ligeramente más grande */
+  height: 32px;
+  border-radius: var(--border-radius-md); /* Más redondeado */
   transition: all var(--transition-normal) var(--transition-timing);
 }
 
@@ -75,29 +80,33 @@
 /* Campos de entrada */
 .eco-input {
   width: 100%;
-  padding: var(--spacing-xs) var(--spacing-sm);
-  border: 1px solid var(--border-color-medium);
-  border-radius: var(--border-radius-sm);
-  font-size: var(--font-size-sm);
-  transition: border-color var(--transition-normal) var(--transition-timing);
+  padding: var(--spacing-sm) var(--spacing-md); /* Padding más amplio */
+  border: 1px solid var(--border-color-light); /* Borde más sutil */
+  border-radius: var(--border-radius-md); /* Más redondeado */
+  font-size: var(--font-size-md); /* Texto más grande */
+  transition: all var(--transition-normal) var(--transition-timing);
+  background-color: var(--color-bg-light); /* Fondo blanco */
 }
 
 .eco-input:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.2);
+  box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.1); /* Sombra más sutil */
+  transform: translateY(-1px); /* Ligero efecto de elevación */
 }
 
 .eco-textarea {
   width: 100%;
-  padding: var(--spacing-xs) var(--spacing-sm);
-  border: 1px solid var(--border-color-medium);
-  border-radius: var(--border-radius-sm);
-  font-size: var(--font-size-sm);
-  transition: border-color var(--transition-normal) var(--transition-timing);
+  padding: var(--spacing-sm) var(--spacing-md); /* Padding más amplio */
+  border: 1px solid var(--border-color-light); /* Borde más sutil */
+  border-radius: var(--border-radius-md); /* Más redondeado */
+  font-size: var(--font-size-md); /* Texto más grande */
+  transition: all var(--transition-normal) var(--transition-timing);
   resize: vertical;
-  min-height: 80px;
+  min-height: 100px; /* Altura mínima mayor */
   font-family: inherit;
+  background-color: var(--color-bg-light); /* Fondo blanco */
+  line-height: 1.5; /* Mejor espaciado de líneas */
 }
 
 .eco-textarea:focus {
@@ -118,18 +127,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--spacing-xs) var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-lg); /* Padding más amplio */
   border: none;
-  border-radius: var(--border-radius-sm);
+  border-radius: var(--border-radius-md); /* Más redondeado */
   cursor: pointer;
   transition: all var(--transition-normal) var(--transition-timing);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
+  letter-spacing: 0.02em; /* Mejor espaciado de letras */
+  box-shadow: var(--box-shadow-sm); /* Sombra sutil */
 }
 
 .eco-button-confirm {
-  background-color: var(--color-primary);
+  background-color: var(--color-primary); /* Rojo como en InCheq */
   color: white;
+  padding: var(--spacing-sm) var(--spacing-xl); /* Padding horizontal más amplio */
 }
 
 .eco-button-confirm:hover:not(:disabled) {
