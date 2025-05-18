@@ -1,10 +1,11 @@
 .container {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
   padding: 1rem;
+  overflow-x: hidden;
 }
 
 @media (min-width: 768px) {
@@ -56,8 +57,11 @@
 .mainContent {
   background: white;
   border-radius: 1rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 @media (min-width: 640px) {
@@ -76,9 +80,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-  padding-bottom: 2rem;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
   border-bottom: 1px solid #e5e7eb;
   text-align: center;
 }
@@ -150,10 +154,34 @@
 }
 
 .sectionTitle {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 600;
-  color: #1f2937;
-  margin: 2rem 0 1rem;
+  color: #111827;
+  margin: 0 0 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #f3f4f6;
+}
+
+.sectionIcon {
+  font-size: 1.25rem;
+  margin-right: 0.25rem;
+}
+
+.citiesCount {
+  margin-left: auto;
+  background-color: #e5e7eb;
+  color: #4b5563;
+  font-size: 0.875rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+}
+
+.updatesSection {
+  margin-bottom: 0.5rem;
 }
 
 .timeline {
@@ -418,9 +446,19 @@
 }
 
 .modal > div {
-  width: 40%;
-  min-width: 500px;
-  max-width: 800px;
+  width: 90%;
+  max-width: 600px;
+  
+  /* Responsive design */
+  @media (min-width: 768px) {
+    width: 60%;
+  }
+  
+  @media (min-width: 1024px) {
+    width: 40%;
+    min-width: 500px;
+    max-width: 800px;
+  }
 }
 
 .cityName {

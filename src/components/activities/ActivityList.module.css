@@ -1,0 +1,132 @@
+.activityListContainer {
+  margin-top: 16px;
+}
+
+.activityListHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.activityListTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #374151;
+  margin: 0;
+}
+
+.addActivityButton {
+  background: none;
+  border: none;
+  color: #3b82f6;
+  font-size: 1.25rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.addActivityButton:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+.activitiesList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.activity {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.activity:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.activityDone {
+  opacity: 0.6;
+}
+
+.activityDone .activityName {
+  text-decoration: line-through;
+  color: #6b7280;
+}
+
+.tempActivity {
+  opacity: 0.7;
+  background-color: rgba(0, 0, 255, 0.05);
+  border-left: 2px solid #3498db;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 0.9; }
+  100% { opacity: 0.6; }
+}
+
+.activityCheckbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  margin-right: 8px;
+  cursor: pointer;
+  background-color: white;
+  transition: all 0.2s ease;
+  color: #10b981;
+  font-weight: bold;
+}
+
+.activityCheckbox:hover {
+  border-color: #10b981;
+  background-color: rgba(16, 185, 129, 0.05);
+}
+
+.activityName {
+  flex-grow: 1;
+  font-size: 0.875rem;
+}
+
+.tempIndicator {
+  font-style: italic;
+  color: #3498db;
+  font-size: 0.8em;
+}
+
+.emptyActivities {
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+  color: #6b7280;
+  font-size: 0.875rem;
+  border: 1px dashed #d1d5db;
+  border-radius: 4px;
+  background-color: #f9fafb;
+}
+
+.addFirstActivityButton {
+  background: none;
+  border: none;
+  color: #3b82f6;
+  font-size: 0.875rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.addFirstActivityButton:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+  text-decoration: underline;
+}

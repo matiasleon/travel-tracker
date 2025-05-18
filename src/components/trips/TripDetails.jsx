@@ -81,9 +81,18 @@ export const TripDetails = () => {
             </div>
           </div>
 
-          <TripUpdates trip={trip} />
+          {trip.updates && trip.updates.length > 0 ? (
+            <div className={styles.updatesSection}>
+              <h2 className={styles.sectionTitle}>Actualizaciones</h2>
+              <TripUpdates trip={trip} />
+            </div>
+          ) : null}
 
-          <h2 className={styles.sectionTitle}>Ciudades a visitar</h2>
+          <h2 className={styles.sectionTitle}>
+            <span className={styles.sectionIcon}>🏙️</span>
+            <span>Ciudades a visitar</span>
+            <span className={styles.citiesCount}>{trip.cities?.length || 0}</span>
+          </h2>
 
           <div className={styles.timeline}>
             {trip.cities?.map((city, index) => (

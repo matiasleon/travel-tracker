@@ -1,21 +1,27 @@
 .cityCard {
   background: white;
-  border: 2px solid #e5e7eb;
+  border: 1px solid #e5e7eb;
   border-radius: 1rem;
-  padding: 1.5rem;
+  padding: 1.25rem;
   position: relative;
   width: 100%;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   z-index: 1;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cityCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 .cityHeader {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.75rem;
   margin-bottom: 1rem;
   border-bottom: 1px solid #e5e7eb;
-  padding-bottom: 1rem;
+  padding-bottom: 0.75rem;
 }
 
 .cityName {
@@ -88,11 +94,13 @@
 }
 
 .observations {
-  margin-top: 1rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
   padding: 0.75rem;
   background-color: #f9fafb;
   border-radius: 0.5rem;
   border-left: 3px solid #3b82f6;
+  font-size: 0.875rem;
 }
 
 .observationsTitle {
@@ -121,6 +129,28 @@
   font-weight: 600;
   color: #4b5563;
   margin: 0.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.addActivityButton {
+  background: none;
+  border: none;
+  color: #3b82f6;
+  cursor: pointer;
+  font-size: 0.875rem;
+  padding: 0;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.addActivityButton:hover {
+  color: #2563eb;
 }
 
 .activity {
@@ -160,8 +190,116 @@
 }
 
 .activityName {
-  flex: 1;
+  margin-left: 8px;
+  flex-grow: 1;
+}
+
+.tempIndicator {
+  font-style: italic;
+  color: #3498db;
+  font-size: 0.8em;
+}
+
+.tempActivity {
+  opacity: 0.7;
+  background-color: rgba(0, 0, 255, 0.05);
+  border-left: 2px solid #3498db;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 0.9; }
+  100% { opacity: 0.6; }
+}
+
+.newActivityContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background-color: #f9fafb;
+  border-radius: 0.375rem;
+  border: 1px solid #e5e7eb;
+}
+
+.newActivityInput {
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
   font-size: 0.875rem;
+  width: 100%;
+}
+
+.newActivityInput:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+.newActivityActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.confirmActivityButton,
+.cancelActivityButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.confirmActivityButton {
+  color: #4CAF50;
+}
+
+.confirmActivityButton:disabled {
+  color: #a5d6a7;
+  cursor: not-allowed;
+}
+
+.submitting {
+  animation: rotate 1s infinite linear;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.cancelActivityButton {
+  color: #F44336;
+}
+
+.emptyActivities {
+  color: #9ca3af;
+  font-size: 0.875rem;
+  text-align: center;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.addFirstActivityButton {
+  background: none;
+  border: none;
+  color: #3b82f6;
+  font-size: 0.875rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.addFirstActivityButton:hover {
+  color: #2563eb;
 }
 
 .activity::before {

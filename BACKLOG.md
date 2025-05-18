@@ -17,6 +17,8 @@
 ### Gestión de Ciudades
 - [x] Componente de ciudad (CityCard)
 - [x] Formulario para agregar ciudad (AddCityForm)
+- [x] Mostrar observaciones de ciudades
+- [x] Agregar actividades a ciudades
 
 ## En Progreso 🚧
 
@@ -29,22 +31,22 @@
 
 ### Gestión de Ciudades
 - [ ] Agregar ciudades a un viaje (formulario existente)
-- [] Agregar comentario sobre la ciudad o estadia 
+- [x] Agregar comentario sobre la ciudad o estadia 
 - [ ] Editar información de ciudades
 - [ ] Eliminar ciudades
 - [ ] Ordenar ciudades por fecha
 
 ### Actividades
-- [ ] Implementar AddActivityForm
-- [ ] Marcar actividades como completadas
+- [x] Agregar actividades a ciudades
+- [x] Marcar actividades como completadas
 - [ ] Eliminar actividades
 - [ ] Reordenar actividades
 
 ### UI/UX
 - [ ] Loading states
 - [ ] Error handling
-- [ ] Animaciones y transiciones
-- [ ] Responsive design
+- [x] Animaciones y transiciones
+- [x] Responsive design
 - [ ] Tema claro/oscuro
 
 ## Próximas Características 🔜
@@ -82,7 +84,7 @@
 4. Falta validación en el formulario de creación
 5. No se puede crear una ciudad
 6. El formulario de ciudades existe pero no está conectado
-7. Las actividades no se pueden agregar aunque existe el componente
+~~7. Las actividades no se pueden agregar aunque existe el componente~~ ✅ RESUELTO
 
 ## Mejoras Técnicas 🛠️
 

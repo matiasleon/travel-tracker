@@ -30,10 +30,8 @@ export const mockTrips = [
         startDate: '2025-06-15',
         endDate: '2025-06-20',
         completed: false,
-        observations: 'Reservar tour nocturno por el Sena',
-        activities: [
-          
-        ]
+        observations: '',
+        activities: []
       },
       {
         id: 'city3',

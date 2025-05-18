@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './CityCard.module.css';
-
-import { useTrips } from '../../hooks/useTrips';
+import { ActivityList } from '../activities/ActivityList';
 
 export const CityCard = ({ 
   city, 
@@ -14,7 +13,6 @@ export const CityCard = ({
   totalCities 
 }) => {
   const navigate = useNavigate();
-  const { toggleActivity } = useTrips();
 
   return (
     <div className={styles.cityCard}>
@@ -47,25 +45,21 @@ export const CityCard = ({
         )}
       </div>
       
-      {city.observations && (
-        <div className={styles.observations}>
-          <h4 className={styles.observationsTitle}>Observaciones:</h4>
-          <p className={styles.observationsText}>{city.observations}</p>
-        </div>
-      )}
+      <div className={styles.observations}>
+        <h4 className={styles.observationsTitle}>Observaciones:</h4>
+        <p className={styles.observationsText}>
+          {city.observations ? city.observations : <em>Sin observaciones</em>}
+        </p>
+      </div>
 
-      <div className={styles.activities}>
-        {city.activities?.length > 0 && (
-          <h4 className={styles.activitiesTitle}>Actividades:</h4>
-        )}
-        {city.activities?.map((activity, index) => (
-          <div key={index} className={`${styles.activity} ${activity.done ? styles.activityDone : ''}`}>
-            <span className={styles.activityCheckbox} onClick={() => isAdmin && toggleActivity(tripId, city.id, index)}>
-              {activity.done ? '✓' : ''}
-            </span>
-            <span className={styles.activityName}>{activity.name}</span>
-          </div>
-        ))}
+      <div className={styles.cityContent}>
+        {/* Componente encapsulado para la lista de actividades */}
+        <ActivityList 
+          tripId={tripId}
+          cityId={city.id}
+          activities={city.activities}
+          isAdmin={isAdmin}
+        />
       </div>
 
       {isAdmin && (
@@ -75,12 +69,6 @@ export const CityCard = ({
             className={styles.editButton}
           >
             ✏️ Editar
-          </button>
-          <button 
-            onClick={() => navigate(`/trips/${tripId}/cities/${city.id}/add-activity`)}
-            className={styles.addButton}
-          >
-            ➕ Actividad
           </button>
         </div>
       )}
