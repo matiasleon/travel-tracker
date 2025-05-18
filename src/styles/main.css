@@ -1,0 +1,167 @@
+/* Archivo principal de estilos */
+
+/* Importar variables y base */
+@import './base/variables.css';
+@import './base/grid.css';
+
+/* Importar utilidades */
+@import './utilities/mixins.css';
+
+/* Importar componentes */
+@import './components/buttons.css';
+@import './components/cards.css';
+@import './components/forms.css';
+@import './components/badges.css';
+
+/* Importar animaciones */
+@import './animations/animations.css';
+
+/* Estilos globales adicionales */
+html, body {
+  font-family: var(--font-family-primary);
+  color: var(--color-text-dark);
+  background-color: var(--color-bg-light);
+  line-height: 1.5;
+  font-weight: var(--font-weight-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Estilos para el patrón UX Optimistic */
+.temp-item {
+  opacity: 0.7;
+  position: relative;
+}
+
+.temp-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(to right, var(--color-primary-light), var(--color-primary));
+  animation: progress 1.5s linear infinite;
+}
+
+.updating-item {
+  position: relative;
+}
+
+.updating-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: inherit;
+  z-index: 1;
+}
+
+.error-item {
+  border-left: 3px solid var(--color-error);
+  background-color: rgba(239, 68, 68, 0.05);
+}
+
+.spinner {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes progress {
+  0% {
+    background-position: 0% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+/* Estilos para estados de viajes, ciudades y actividades */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+.status-PLANNING,
+.status-PLANNED {
+  background-color: rgba(59, 130, 246, 0.1);
+  color: var(--color-info);
+}
+
+.status-IN_PROGRESS {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: var(--color-warning-dark);
+}
+
+.status-COMPLETED {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--color-success);
+}
+
+.status-CANCELLED {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--color-error);
+}
+
+/* Utilidades de accesibilidad */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.focus-visible:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Utilidades de truncado de texto */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.line-clamp-1,
+.line-clamp-2,
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-1 {
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+}
+
+.line-clamp-2 {
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.line-clamp-3 {
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+}

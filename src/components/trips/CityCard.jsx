@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from './CityCard.module.css';
 import { ActivityList } from '../activities/ActivityList';
 import { CITY_STATUS, getStatusText } from '../../constants/statusTypes';
+import { useNotification } from '../../context/NotificationContext';
 
 export const CityCard = ({ 
   city, 
@@ -15,6 +16,7 @@ export const CityCard = ({
 }) => {
   // Hooks de navegación y estado
   const navigate = useNavigate();
+  const { showSuccess, showError } = useNotification();
   
   // Estado local para implementar UX Optimistic
   const [localCity, setLocalCity] = useState(city);
@@ -53,13 +55,20 @@ export const CityCard = ({
       .then(() => {
         // Éxito: quitar el indicador de actualización
         setIsUpdating(false);
+        // Limpiar cualquier error previo
+        setUpdateError(null);
+        // Mostrar notificación de éxito
+        const statusText = newStatus === CITY_STATUS.COMPLETED ? 'completada' : 'pendiente';
+        showSuccess(`Ciudad marcada como ${statusText}`);
       })
       .catch(error => {
         // Error: revertir al estado anterior
-        console.error('Error al actualizar ciudad:', error);
+        console.error('Error al actualizar ciudad:', error || {});
         setLocalCity(previousCity);
         setUpdateError('Error al actualizar. Intente nuevamente.');
         setIsUpdating(false);
+        // Mostrar notificación de error
+        showError('Error al actualizar el estado de la ciudad');
       });
   };
   

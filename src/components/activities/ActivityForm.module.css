@@ -1,32 +1,32 @@
 .activityFormContainer {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 16px;
-  padding: 8px;
-  border-radius: 6px;
-  background-color: #f9fafb;
-  border: 1px solid #e5e7eb;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+  padding: var(--spacing-xs);
+  border-radius: var(--border-radius-sm);
+  background-color: var(--background-color-light);
+  border: 1px solid var(--border-color-medium);
 }
 
 .activityInput {
   width: 100%;
-  padding: 8px 12px;
-  border: 1px solid #d1d5db;
-  border-radius: 4px;
-  font-size: 0.875rem;
-  transition: border-color 0.2s ease;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: 1px solid var(--border-color-medium);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-sm);
+  transition: border-color var(--transition-normal) var(--transition-timing);
 }
 
 .activityInput:focus {
   outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.2);
 }
 
 .activityFormActions {
   display: flex;
-  gap: 8px;
+  gap: var(--spacing-xs);
   justify-content: flex-end;
 }
 
@@ -38,22 +38,22 @@
   width: 32px;
   height: 32px;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--border-radius-sm);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all var(--transition-normal) var(--transition-timing);
 }
 
 .confirmButton {
-  background-color: #10b981;
-  color: white;
+  background-color: var(--color-success);
+  color: var(--color-text-light);
 }
 
 .confirmButton:hover:not(:disabled) {
-  background-color: #059669;
+  background-color: var(--color-success-dark);
 }
 
 .confirmButton:disabled {
-  background-color: #d1fae5;
+  background-color: var(--color-success-light);
   cursor: not-allowed;
 }
 
@@ -75,7 +75,7 @@
     rgba(255, 255, 255, 0.2),
     transparent
   );
-  animation: loading 1.5s infinite;
+  animation: loading var(--transition-slow) infinite;
 }
 
 @keyframes loading {
@@ -88,13 +88,13 @@
 }
 
 .cancelButton {
-  background-color: #f3f4f6;
-  color: #6b7280;
+  background-color: var(--background-color-light);
+  color: var(--color-text-medium);
 }
 
 .cancelButton:hover:not(:disabled) {
-  background-color: #e5e7eb;
-  color: #4b5563;
+  background-color: var(--border-color-medium);
+  color: var(--color-text-dark);
 }
 
 .cancelButton:disabled {
@@ -103,7 +103,7 @@
 }
 
 .errorMessage {
-  color: #ef4444;
-  font-size: 0.75rem;
-  margin: 4px 0 0;
+  color: var(--color-error);
+  font-size: var(--font-size-xs);
+  margin: var(--spacing-xs) 0 0;
 }

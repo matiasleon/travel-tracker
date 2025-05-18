@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './ActivityForm.module.css';
 import { useTrips } from '../../hooks/useTrips';
+import { useNotification } from '../../context/NotificationContext';
 
 /**
  * Componente para agregar nuevas actividades a una ciudad
@@ -12,6 +13,7 @@ export const ActivityForm = ({
   onCancel 
 }) => {
   const { addCityActivity } = useTrips();
+  const { showSuccess, showError } = useNotification();
   const [activityName, setActivityName] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);
@@ -23,16 +25,34 @@ export const ActivityForm = ({
     setError(null);
     
     try {
+      // Implementación del patrón UX Optimistic
+      // Notificar al usuario que se está agregando la actividad
+      const tempActivity = {
+        name: activityName.trim(),
+        status: 'PLANNED',
+        isTemp: true // Marcador para indicar que es temporal
+      };
+      
+      // Notificar al componente padre con la actividad temporal
+      onActivityAdded(tempActivity);
+      
       // Llamar a la API (asíncrona)
       const result = await addCityActivity(tripId, cityId, activityName.trim());
       
-      // Notificar al componente padre sobre la actividad agregada
-      onActivityAdded(result);
+      // Mostrar notificación de éxito
+      showSuccess('Actividad agregada correctamente');
       
       // Limpiar el formulario
       setActivityName('');
     } catch (err) {
-      setError(`Error: ${err.message}`);
+      console.error('Error al agregar actividad:', err);
+      setError(`Error al agregar actividad. Intente nuevamente.`);
+      
+      // Mostrar notificación de error
+      showError('Error al agregar actividad. Intente nuevamente.');
+      
+      // Notificar al componente padre sobre el error para que pueda manejarlo si es necesario
+      if (onCancel) onCancel();
     } finally {
       setIsSubmitting(false);
     }

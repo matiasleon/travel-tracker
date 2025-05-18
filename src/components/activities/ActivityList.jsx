@@ -56,7 +56,8 @@ export const ActivityList = ({
           if (updated[index]) {
             updated[index] = {
               ...updated[index],
-              isUpdating: false
+              isUpdating: false,
+              error: null // Limpiar cualquier error previo
             };
           }
           return updated;
@@ -64,9 +65,19 @@ export const ActivityList = ({
       })
       .catch(error => {
         // Error: revertir al estado anterior
-        console.error('Error al actualizar actividad:', error);
-        setLocalActivities(currentActivities);
-        // Mostrar notificación de error (podría implementarse)
+        console.error('Error al actualizar actividad:', error || {});
+        // Actualizar el estado con el error
+        setLocalActivities(prev => {
+          const updated = [...currentActivities];
+          if (updated[index]) {
+            updated[index] = {
+              ...updated[index],
+              isUpdating: false,
+              error: 'Error al actualizar. Intente nuevamente.'
+            };
+          }
+          return updated;
+        });
       });
   };
 
@@ -100,48 +111,50 @@ export const ActivityList = ({
         />
       )}
       
-      {localActivities.length > 0 ? (
-        <div className={styles.activitiesList}>
-          {localActivities.map((activity, index) => (
+      <div className={styles.activitiesList}>
+        {localActivities.length > 0 ? (
+          localActivities.map((activity, index) => (
             <div 
               key={activity.id || index} 
               className={`${styles.activity} 
                 ${activity.status === ACTIVITY_STATUS.COMPLETED ? styles.activityDone : ''} 
-                ${activity.isTemp ? styles.tempActivity : ''}
-                ${activity.isUpdating ? styles.updatingActivity : ''}`}
+                ${activity.isUpdating ? styles.updatingActivity : ''}
+                ${activity.error ? styles.errorActivity : ''}`}
             >
               <span 
                 className={`${styles.activityCheckbox} ${activity.isUpdating ? styles.updating : ''}`}
-                onClick={() => !activity.isTemp && !activity.isUpdating && handleToggleActivity(index)}
+                onClick={() => !activity.isUpdating && handleToggleActivity(index)}
               >
-                {activity.status === ACTIVITY_STATUS.COMPLETED ? '\u2713' : ''}
+                {activity.status === ACTIVITY_STATUS.COMPLETED ? '✓' : ''}
                 {activity.isUpdating && <span className={styles.spinner}></span>}
               </span>
               <span className={styles.activityName}>
                 {activity.name}
-                {activity.isTemp && <small className={styles.tempIndicator}> (guardando...)</small>}
+                {activity.error && (
+                  <span className={styles.activityError}>{activity.error}</span>
+                )}
                 <span className={`${styles.activityStatus} ${styles[activity.status || ACTIVITY_STATUS.PLANNED]}`}>
                   {getStatusText(activity.status, 'activity')}
                   {activity.isUpdating && <span className={styles.statusUpdating}> (actualizando...)</span>}
                 </span>
               </span>
             </div>
-          ))}
-        </div>
-      ) : (
-        <div className={styles.emptyActivities}>
-          {isAdmin ? (
-            <button 
-              className={styles.addFirstActivityButton}
-              onClick={() => setIsAddingActivity(true)}
-            >
-              Agregar primera actividad
-            </button>
-          ) : (
-            <span>No hay actividades</span>
-          )}
-        </div>
-      )}
+          ))
+        ) : (
+          <div className={styles.emptyActivities}>
+            {isAdmin ? (
+              <button 
+                className={styles.addFirstActivityButton}
+                onClick={() => setIsAddingActivity(true)}
+              >
+                Agregar primera actividad
+              </button>
+            ) : (
+              <span>No hay actividades</span>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

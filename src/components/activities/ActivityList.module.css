@@ -1,53 +1,59 @@
 .activityListContainer {
-  margin-top: 16px;
+  margin-top: var(--spacing-md);
 }
 
 .activityListHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: var(--spacing-sm);
 }
 
 .activityListTitle {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #374151;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-dark);
   margin: 0;
 }
 
 .addActivityButton {
   background: none;
   border: none;
-  color: #3b82f6;
-  font-size: 1.25rem;
-  font-weight: bold;
+  color: var(--color-primary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
   cursor: pointer;
-  padding: 0 8px;
-  border-radius: 4px;
-  transition: all 0.2s ease;
+  padding: 0 var(--spacing-xs);
+  border-radius: var(--border-radius-sm);
+  transition: all var(--transition-normal) var(--transition-timing);
 }
 
 .addActivityButton:hover {
-  background-color: rgba(59, 130, 246, 0.1);
+  background-color: var(--color-primary-light);
 }
 
 .activitiesList {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--spacing-xs);
 }
 
 .activity {
   display: flex;
   align-items: center;
-  padding: 8px;
-  border-radius: 4px;
-  transition: all 0.2s ease;
+  padding: var(--spacing-xs);
+  border-radius: var(--border-radius-sm);
+  transition: all var(--transition-normal) var(--transition-timing);
+  position: relative;
 }
 
 .activity:hover {
   background-color: rgba(0, 0, 0, 0.05);
+}
+
+.errorActivity {
+  border-left: 3px solid var(--color-error);
+  background-color: rgba(239, 68, 68, 0.05);
 }
 
 .activityDone {
@@ -56,14 +62,26 @@
 
 .activityDone .activityName {
   text-decoration: line-through;
-  color: #6b7280;
+  color: var(--color-text-medium);
 }
 
 .tempActivity {
   opacity: 0.7;
-  background-color: rgba(0, 0, 255, 0.05);
-  border-left: 2px solid #3498db;
+  position: relative;
+  background-color: rgba(59, 130, 246, 0.05);
+  border-left: 2px solid var(--color-primary);
   animation: pulse 1.5s infinite;
+}
+
+.tempActivity::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(to right, var(--color-primary-light), var(--color-primary));
+  animation: progress 1.5s linear infinite;
 }
 
 @keyframes pulse {
@@ -78,61 +96,72 @@
   justify-content: center;
   width: 20px;
   height: 20px;
-  border: 1px solid #d1d5db;
-  border-radius: 4px;
-  margin-right: 8px;
+  border: 1px solid var(--border-color-medium);
+  border-radius: var(--border-radius-sm);
+  margin-right: var(--spacing-xs);
   cursor: pointer;
   background-color: white;
-  transition: all 0.2s ease;
-  color: #10b981;
-  font-weight: bold;
+  transition: all var(--transition-normal) var(--transition-timing);
+  color: var(--color-success);
+  font-weight: var(--font-weight-bold);
 }
 
 .activityCheckbox:hover {
-  border-color: #10b981;
-  background-color: rgba(16, 185, 129, 0.05);
+  border-color: var(--color-success);
+  background-color: var(--color-success-light);
 }
 
 .activityName {
-  flex-grow: 1;
-  font-size: 0.875rem;
+  flex: 1;
+  margin-left: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-dark);
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+}
+
+.activityError {
+  color: var(--color-error);
+  font-size: var(--font-size-xs);
+  margin-top: 2px;
+  font-weight: var(--font-weight-medium);
 }
 
 .tempIndicator {
   font-style: italic;
-  color: #3498db;
-  font-size: 0.8em;
+  color: var(--color-primary);
+  font-size: var(--font-size-xs);
 }
 
 .activityStatus {
-  font-size: 0.7rem;
-  padding: 0.15rem 0.4rem;
-  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
   margin-left: auto;
   white-space: nowrap;
 }
 
 .planned {
-  background-color: #e0f2fe;
-  color: #0284c7;
+  background-color: rgba(59, 130, 246, 0.1);
+  color: var(--color-info);
 }
 
 .in_progress {
-  background-color: #fef3c7;
-  color: #d97706;
+  background-color: rgba(245, 158, 11, 0.1);
+  color: var(--color-warning-dark);
 }
 
 .completed {
-  background-color: #d1fae5;
-  color: #059669;
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--color-success);
 }
 
 .cancelled {
-  background-color: #fee2e2;
-  color: #dc2626;
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--color-error);
 }
 
 /* Estilos para actividades en proceso de actualización */

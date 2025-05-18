@@ -25,13 +25,30 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  position: relative;
 }
 
-.mainContent {
-  max-width: 72rem;
+.dashboardContainer {
+  padding: 2rem;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 1.5rem;
-  position: relative;
+  background-color: #f8fafc;
+  min-height: calc(100vh - 80px);
+}
+
+.createTripButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #0284c7;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  letter-spacing: -0.01em;
 }
 
 .fab {
@@ -99,6 +116,41 @@
   max-width: 600px;
 }
 
+.heroSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 85vh;
+  padding: 2rem;
+  background: #0c4a6e;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(12, 74, 110, 0.9) 0%, rgba(14, 165, 233, 0.8) 100%);
+  z-index: 1;
+}
+
+.heroContent {
+  z-index: 2;
+  max-width: 600px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 2.5rem;
+  border-radius: 1rem;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 .modal {
   position: fixed;
   top: 0;
@@ -126,64 +178,34 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #e2e8f0;
+  background-color: #f8fafc;
 }
 
-.modalHeader h2 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #1e293b;
-  margin: 0;
+.modalBody {
+  padding: 1.5rem;
 }
 
-.closeButton {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: #64748b;
-  cursor: pointer;
-  padding: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.25rem;
-}
-
-.closeButton:hover {
-  background-color: #f1f5f9;
-  color: #1e293b;
-}
-
-.tripList {
+.dashboardHeaderContent {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
 }
 
-.userInfo {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+.dashboardTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #0c4a6e;
+  margin: 0;
+  letter-spacing: -0.03em;
 }
 
-.userName {
-  color: rgb(75 85 99);
-}
-
-.sidebar {
+.tripsContainer {
   background-color: white;
-  border-radius: 0.5rem;
   padding: 1.5rem;
-  position: sticky;
-  top: 2rem;
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
-  border: 1px solid rgb(229 231 235);
-}
-
-.sidebarTitle {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
 }
 
 @media (min-width: 1024px) {
