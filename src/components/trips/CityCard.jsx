@@ -44,6 +44,13 @@ export const CityCard = ({
         )}
       </div>
       
+      {city.observations && (
+        <div className={styles.observations}>
+          <h4 className={styles.observationsTitle}>Observaciones:</h4>
+          <p className={styles.observationsText}>{city.observations}</p>
+        </div>
+      )}
+
       <div className={styles.activities}>
         {city.activities?.map((activity) => (
           <div key={activity.id} className={styles.activity}>

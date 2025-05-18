@@ -29,6 +29,7 @@
 
 ### Gestión de Ciudades
 - [ ] Agregar ciudades a un viaje (formulario existente)
+- [] Agregar comentario sobre la ciudad o estadia 
 - [ ] Editar información de ciudades
 - [ ] Eliminar ciudades
 - [ ] Ordenar ciudades por fecha

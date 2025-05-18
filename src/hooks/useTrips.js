@@ -15,8 +15,13 @@ export const useTrips = () => {
       userRole: 'admin',
       createdBy: 'mock-user-id'
     };
-    // Agregar el nuevo viaje manteniendo los mocks
-    setTrips(prev => [...mockTrips, ...prev.filter(t => !mockTrips.find(m => m.id === t.id)), newTrip]);
+    // Agregar el nuevo viaje manteniendo los mocks y los viajes previos
+    setTrips(prev => {
+      const newState = [...mockTrips, ...prev.filter(t => !mockTrips.find(m => m.id === t.id)), newTrip];
+      console.log('Estado actualizado:', newState);
+      return newState;
+    });
+
     return newTrip.id;
   }, []);
 
