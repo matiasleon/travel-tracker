@@ -1,5 +1,6 @@
 import { useState, useCallback, useRef } from 'react';
 import { mockTrips } from '../mocks/trips';
+import { ACTIVITY_STATUS, CITY_STATUS, TRIP_STATUS } from '../constants/statusTypes';
 
 export const useTrips = () => {
   // Usar una referencia para mantener los datos mock originales
@@ -14,7 +15,7 @@ export const useTrips = () => {
       ...tripData,
       id: Date.now().toString(),
       activities: [],
-      status: 'planning',
+      status: TRIP_STATUS.PLANNING,
       userRole: 'admin',
       createdBy: 'mock-user-id'
     };
@@ -46,45 +47,82 @@ export const useTrips = () => {
     }));
   }, []);
 
-  // Función para marcar/desmarcar una actividad como completada
+  // Función para cambiar el estado de una actividad (planned, completed, etc.)
+  // Implementa el patrón UX Optimistic devolviendo una promesa
   const toggleActivity = useCallback((tripId, cityId, activityIndex) => {
-    // Crear una copia profunda del estado actual para asegurar la inmutabilidad
-    setTrips(prevTrips => {
-      // Crear una nueva copia del array de viajes
-      const updatedTrips = prevTrips.map(trip => {
-        // Si es el viaje que buscamos
-        if (trip.id === tripId) {
-          // Crear una nueva copia del viaje
-          const updatedTrip = {
-            ...trip,
-            // Mapear las ciudades para encontrar la correcta
-            cities: trip.cities.map(city => {
-              // Si es la ciudad que buscamos
-              if (city.id === cityId) {
-                // Crear una copia de las actividades
-                const updatedActivities = [...city.activities];
-                // Actualizar el estado de la actividad específica
-                if (updatedActivities[activityIndex]) {
-                  updatedActivities[activityIndex] = {
-                    ...updatedActivities[activityIndex],
-                    done: !updatedActivities[activityIndex].done
-                  };
-                }
-                // Crear una nueva copia de la ciudad con las actividades actualizadas
-                return { ...city, activities: updatedActivities };
-              }
-              return city; // Devolver la ciudad sin cambios
-            })
-          };
-          return updatedTrip;
-        }
-        return trip; // Devolver el viaje sin cambios
-      });
+    // Devolver una promesa para permitir manejo asíncrono
+    return new Promise((resolve, reject) => {
+      // Obtener la actividad actual para determinar el nuevo estado
+      const currentTrip = trips.find(trip => trip.id === tripId);
+      if (!currentTrip) return reject(new Error('Viaje no encontrado'));
       
-      // Forzar la actualización del estado con un nuevo array
-      return [...updatedTrips];
+      const currentCity = currentTrip.cities.find(city => city.id === cityId);
+      if (!currentCity) return reject(new Error('Ciudad no encontrada'));
+      
+      const currentActivity = currentCity.activities[activityIndex];
+      if (!currentActivity) return reject(new Error('Actividad no encontrada'));
+      
+      const currentStatus = currentActivity.status || ACTIVITY_STATUS.PLANNED;
+      const newStatus = currentStatus === ACTIVITY_STATUS.COMPLETED ? ACTIVITY_STATUS.PLANNED : ACTIVITY_STATUS.COMPLETED;
+      
+      // Simular una llamada a API con latencia
+      setTimeout(() => {
+        // Simular éxito con 90% de probabilidad
+        if (Math.random() > 0.1) {
+          // Actualizar el estado real
+          setTrips(prevTrips => {
+            // Crear una nueva copia del array de viajes
+            const updatedTrips = prevTrips.map(trip => {
+              // Si es el viaje que buscamos
+              if (trip.id === tripId) {
+                // Crear una nueva copia del viaje
+                const updatedTrip = {
+                  ...trip,
+                  // Mapear las ciudades para encontrar la correcta
+                  cities: trip.cities.map(city => {
+                    // Si es la ciudad que buscamos
+                    if (city.id === cityId) {
+                      // Crear una copia de las actividades
+                      const updatedActivities = [...city.activities];
+                      // Actualizar el estado de la actividad específica
+                      if (updatedActivities[activityIndex]) {
+                        updatedActivities[activityIndex] = {
+                          ...updatedActivities[activityIndex],
+                          status: newStatus
+                        };
+                      }
+                      // Crear una nueva copia de la ciudad con las actividades actualizadas
+                      return { ...city, activities: updatedActivities };
+                    }
+                    return city; // Devolver la ciudad sin cambios
+                  })
+                };
+                return updatedTrip;
+              }
+              return trip; // Devolver el viaje sin cambios
+            });
+            
+            // Forzar la actualización del estado con un nuevo array
+            return [...updatedTrips];
+          });
+          
+          // Resolver la promesa con éxito
+          resolve({
+            success: true,
+            data: {
+              tripId,
+              cityId,
+              activityIndex,
+              newStatus
+            }
+          });
+        } else {
+          // Simular error
+          reject(new Error('Error al actualizar el estado de la actividad'));
+        }
+      }, 500); // Simular latencia de red de 500ms
     });
-  }, []);
+  }, [trips]);
   
   // Función para agregar una nueva actividad a una ciudad específica (asíncrona)
   const addCityActivity = useCallback(async (tripId, cityId, activityName) => {
@@ -103,7 +141,7 @@ export const useTrips = () => {
               success: true,
               data: {
                 name: activityName,
-                done: false,
+                status: ACTIVITY_STATUS.PLANNED,
                 id: `activity-${Date.now()}`
               }
             });
@@ -178,12 +216,72 @@ export const useTrips = () => {
     return { success: true, message: 'Viaje eliminado correctamente' };
   }, []);
 
+  // Función para cambiar el estado de una ciudad (planned, in_progress, completed, cancelled)
+  // Implementa el patrón UX Optimistic devolviendo una promesa
+  const toggleCityStatus = useCallback((tripId, cityId) => {
+    // Devolver una promesa para permitir manejo asíncrono
+    return new Promise((resolve, reject) => {
+      // Obtener la ciudad actual para determinar el nuevo estado
+      const currentTrip = trips.find(trip => trip.id === tripId);
+      if (!currentTrip) return reject(new Error('Viaje no encontrado'));
+      
+      const currentCity = currentTrip.cities.find(city => city.id === cityId);
+      if (!currentCity) return reject(new Error('Ciudad no encontrada'));
+      
+      const currentStatus = currentCity.status || CITY_STATUS.PLANNED;
+      const newStatus = currentStatus === CITY_STATUS.COMPLETED ? CITY_STATUS.PLANNED : CITY_STATUS.COMPLETED;
+      
+      // Simular una llamada a API con latencia
+      setTimeout(() => {
+        // Simular éxito con 90% de probabilidad
+        if (Math.random() > 0.1) {
+          // Actualizar el estado real
+          setTrips(prevTrips => {
+            return prevTrips.map(trip => {
+              if (trip.id === tripId) {
+                return {
+                  ...trip,
+                  cities: trip.cities.map(city => {
+                    if (city.id === cityId) {
+                      return {
+                        ...city,
+                        status: newStatus,
+                        completedAt: newStatus === CITY_STATUS.COMPLETED ? new Date().toISOString() : null
+                      };
+                    }
+                    return city;
+                  })
+                };
+              }
+              return trip;
+            });
+          });
+          
+          // Resolver la promesa con éxito
+          resolve({
+            success: true,
+            data: {
+              tripId,
+              cityId,
+              newStatus,
+              timestamp: new Date().toISOString()
+            }
+          });
+        } else {
+          // Simular error
+          reject(new Error('Error al actualizar el estado de la ciudad'));
+        }
+      }, 500); // Simular latencia de red de 500ms
+    });
+  }, [trips]);
+
   return {
     trips,
     loading,
     createTrip,
     addActivity,
     toggleActivity,
+    toggleCityStatus,
     deleteTrip,
     addCity,
     addCityActivity

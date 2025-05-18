@@ -355,3 +355,94 @@
   white-space: nowrap;
   z-index: 2;
 }
+
+/* Estilos para las badges de estado */
+.statusBadge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+.planned {
+  background-color: #e0f2fe;
+  color: #0284c7;
+}
+
+.in_progress {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+.completed {
+  background-color: #d1fae5;
+  color: #059669;
+}
+
+.cancelled {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+/* Estilos para ciudades en proceso de actualización */
+.cityCard.updating {
+  position: relative;
+  background-color: rgba(249, 250, 251, 0.7);
+  transition: background-color 0.3s ease;
+}
+
+.updating {
+  position: relative;
+}
+
+.spinner {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(59, 130, 246, 0.3);
+  border-radius: 50%;
+  border-top-color: #3b82f6;
+  animation: spin 1s ease-in-out infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.statusUpdating {
+  font-style: italic;
+  font-size: 0.7em;
+  color: #6b7280;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.errorMessage {
+  color: #dc2626;
+  font-size: 0.8rem;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  background-color: #fee2e2;
+  border-radius: 0.25rem;
+  text-align: center;
+}
+
+/* Estilos para el estado de la ciudad */
+.cityStatus {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: 9999px;
+  margin-left: 0.5rem;
+  white-space: nowrap;
+}

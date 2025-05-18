@@ -3,6 +3,7 @@ import { useAuth } from '../../context/AuthContext';
 import { Link } from 'react-router-dom';
 import { useDateFormat } from '../../hooks/useDateFormat';
 import { useTrips } from '../../hooks/useTrips';
+import { TripSummary } from './TripSummary';
 import styles from './TripItem.module.css';
 import commonStyles from '../../styles/common.module.css';
 
@@ -30,9 +31,10 @@ export const TripItem = ({ trip }) => {
             <h3 className={styles.title}>{trip.name}</h3>
             <div className={styles.tripInfo}>
               <p>{trip.description}</p>
-              <p>Inicio: {formatDateForDisplay(trip.startDate)}</p>
-              <p>Fin: {formatDateForDisplay(trip.endDate)}</p>
-              <p>{trip.cities?.length || 0} ciudades</p>
+              <div className={styles.tripDates}>
+                <p>Inicio: {formatDateForDisplay(trip.startDate)}</p>
+                <p>Fin: {formatDateForDisplay(trip.endDate)}</p>
+              </div>
             </div>
           </div>
         </Link>
@@ -44,6 +46,11 @@ export const TripItem = ({ trip }) => {
         >
           Eliminar
         </button>
+      </div>
+      
+      {/* Componente de resumen del viaje */}
+      <div className={styles.tripSummaryWrapper}>
+        <TripSummary trip={trip} />
       </div>
     </div>
   );

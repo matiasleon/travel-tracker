@@ -3,7 +3,7 @@ export const mockTrips = [
     id: '1',
     userRole: 'admin',
     createdBy: 'mock-user-id',
-    name: 'Europa',
+    name: 'Viaje a Europa',
     destination: 'Europa',
     startDate: '2025-06-15',
     endDate: '2025-06-22',
@@ -17,11 +17,11 @@ export const mockTrips = [
         name: 'Barcelona',
         startDate: '2025-06-15',
         endDate: '2025-06-20',
-        completed: false,
+        status: 'planned',
         observations: 'Reservar tour nocturno por el Sena',
         activities: [{
           name: 'Paseo barceloneta',
-          done: false
+          status: 'planned'
         }]
       },
       {
@@ -29,25 +29,31 @@ export const mockTrips = [
         name: 'Londres',
         startDate: '2025-06-15',
         endDate: '2025-06-20',
-        completed: false,
+        status: 'planned',
         observations: '',
-        activities: []
+        activities: [{
+          name: 'Picadilly circus',
+          status: 'planned'
+        }]
       },
       {
         id: 'city3',
         name: 'Nottingham',
         startDate: '2025-06-20',
         endDate: '2025-06-22',
-        completed: false,
+        status: 'planned',
         observations: 'Reservar tour nocturno por el Sena',
-        activities: []
+        activities: [{
+          name: 'Warhammer',
+          status: 'planned'
+        }]
       },
       {
         id: 'city4',
         name: 'Manchester',
         startDate: '2025-06-20',
         endDate: '2025-06-22',
-        completed: false,
+        status: 'planned',
         observations: 'Reservar tour nocturno por el Sena',
         activities: []
       }

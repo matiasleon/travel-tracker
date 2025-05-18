@@ -96,12 +96,83 @@
 .activityName {
   flex-grow: 1;
   font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .tempIndicator {
   font-style: italic;
   color: #3498db;
   font-size: 0.8em;
+}
+
+.activityStatus {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: 9999px;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.planned {
+  background-color: #e0f2fe;
+  color: #0284c7;
+}
+
+.in_progress {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+.completed {
+  background-color: #d1fae5;
+  color: #059669;
+}
+
+.cancelled {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+/* Estilos para actividades en proceso de actualización */
+.updatingActivity {
+  background-color: rgba(249, 250, 251, 0.7);
+  position: relative;
+}
+
+.updating {
+  position: relative;
+}
+
+.spinner {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(59, 130, 246, 0.3);
+  border-radius: 50%;
+  border-top-color: #3b82f6;
+  animation: spin 1s ease-in-out infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.statusUpdating {
+  font-style: italic;
+  font-size: 0.7em;
+  color: #6b7280;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
 }
 
 .emptyActivities {

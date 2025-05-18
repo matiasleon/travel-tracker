@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useTrips } from '../../hooks/useTrips';
 import { useAuth } from '../../context/AuthContext';
 import { Layout } from '../layout/Layout';
+import { ACTIVITY_STATUS, CITY_STATUS, TRIP_STATUS, getStatusText } from '../../constants/statusTypes';
 import styles from './TripDetails.module.css';
 import commonStyles from '../../styles/common.module.css';
 
@@ -88,15 +89,45 @@ export const TripDetails = () => {
             </div>
           ) : null}
 
+          <div className={styles.tripSummarySection}>
+            <h2 className={styles.sectionTitle}>
+              <span className={styles.sectionIcon}>📊</span>
+              <span>Resumen del Viaje</span>
+            </h2>
+            <div className={styles.tripSummaryStats}>
+              <div className={styles.statItem}>
+                <span className={styles.statLabel}>Ciudades</span>
+                <span className={styles.statValue}>
+                  {trip.cities?.filter(city => city.status === CITY_STATUS.COMPLETED).length || 0}/{trip.cities?.length || 0}
+                </span>
+              </div>
+              <div className={styles.statItem}>
+                <span className={styles.statLabel}>Actividades</span>
+                <span className={styles.statValue}>
+                  {trip.cities?.reduce((total, city) => 
+                    total + (city.activities?.filter(act => act.status === ACTIVITY_STATUS.COMPLETED).length || 0), 0)}/
+                  {trip.cities?.reduce((total, city) => 
+                    total + (city.activities?.length || 0), 0)}
+                </span>
+              </div>
+              <div className={styles.statItem}>
+                <span className={styles.statLabel}>Estado</span>
+                <span className={`${styles.statValue} ${styles[trip.status]}`}>
+                  {getStatusText(trip.status, 'trip')}
+                </span>
+              </div>
+            </div>
+          </div>
+
           <h2 className={styles.sectionTitle}>
-            <span className={styles.sectionIcon}>🏙️</span>
+            <span className={styles.sectionIcon}>🌙️</span>
             <span>Ciudades a visitar</span>
             <span className={styles.citiesCount}>{trip.cities?.length || 0}</span>
           </h2>
 
           <div className={styles.timeline}>
             {trip.cities?.map((city, index) => (
-              <div key={city.id}>
+              <div key={city.id} className={styles.cityTimelineItem}>
                 <CityCard
                   city={city}
                   tripId={tripId}

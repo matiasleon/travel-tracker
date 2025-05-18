@@ -4,13 +4,17 @@
   border-radius: 0.5rem;
   padding: 1.5rem;
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  display: flex;
+  flex-direction: column;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgb(229 231 235);
 }
 
 .link {
@@ -33,6 +37,22 @@
   transition: color 0.2s;
 }
 
+.tripInfo {
+  font-size: 0.875rem;
+  color: rgb(75 85 99);
+  margin-top: 0.5rem;
+}
+
+.tripDates {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.tripDates p {
+  margin: 0;
+}
+
 .addButton {
   padding: 0.5rem 1rem;
   font-size: 0.875rem;
@@ -49,6 +69,10 @@
 
 .addButton:hover {
   background-color: rgb(219 234 254);
+}
+
+.tripSummaryWrapper {
+  margin-top: 0.5rem;
 }
 
 .activities {
