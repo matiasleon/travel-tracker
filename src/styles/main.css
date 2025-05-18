@@ -13,6 +13,9 @@
 @import './components/forms.css';
 @import './components/badges.css';
 
+/* Importar patrones */
+@import './patterns/eco-pattern.css';
+
 /* Importar animaciones */
 @import './animations/animations.css';
 

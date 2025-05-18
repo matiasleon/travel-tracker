@@ -1,61 +1,35 @@
+/* Estilos para el componente ActivityForm basados en el patrón ECO */
+
 .activityFormContainer {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xs);
-  margin-bottom: var(--spacing-md);
+  composes: eco-container from '../../styles/patterns/eco-pattern.css';
   padding: var(--spacing-xs);
   border-radius: var(--border-radius-sm);
-  background-color: var(--background-color-light);
   border: 1px solid var(--border-color-medium);
 }
 
 .activityInput {
-  width: 100%;
-  padding: var(--spacing-xs) var(--spacing-sm);
-  border: 1px solid var(--border-color-medium);
-  border-radius: var(--border-radius-sm);
-  font-size: var(--font-size-sm);
-  transition: border-color var(--transition-normal) var(--transition-timing);
-}
-
-.activityInput:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.2);
+  composes: eco-input from '../../styles/patterns/eco-pattern.css';
 }
 
 .activityFormActions {
-  display: flex;
-  gap: var(--spacing-xs);
-  justify-content: flex-end;
-}
-
-.confirmButton,
-.cancelButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border: none;
-  border-radius: var(--border-radius-sm);
-  cursor: pointer;
-  transition: all var(--transition-normal) var(--transition-timing);
+  composes: eco-actions from '../../styles/patterns/eco-pattern.css';
 }
 
 .confirmButton {
-  background-color: var(--color-success);
-  color: var(--color-text-light);
+  composes: eco-button eco-button-confirm from '../../styles/patterns/eco-pattern.css';
+  width: 32px;
+  height: 32px;
+  padding: 0;
 }
 
-.confirmButton:hover:not(:disabled) {
-  background-color: var(--color-success-dark);
+.cancelButton {
+  composes: eco-button eco-button-cancel from '../../styles/patterns/eco-pattern.css';
+  width: 32px;
+  height: 32px;
+  padding: 0;
 }
 
-.confirmButton:disabled {
-  background-color: var(--color-success-light);
-  cursor: not-allowed;
-}
+
 
 .submitting {
   position: relative;
@@ -87,23 +61,8 @@
   }
 }
 
-.cancelButton {
-  background-color: var(--background-color-light);
-  color: var(--color-text-medium);
-}
 
-.cancelButton:hover:not(:disabled) {
-  background-color: var(--border-color-medium);
-  color: var(--color-text-dark);
-}
-
-.cancelButton:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
 
 .errorMessage {
-  color: var(--color-error);
-  font-size: var(--font-size-xs);
-  margin: var(--spacing-xs) 0 0;
+  composes: eco-error from '../../styles/patterns/eco-pattern.css';
 }

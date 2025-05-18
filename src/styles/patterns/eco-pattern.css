@@ -1,0 +1,197 @@
+/**
+ * ECO Pattern - Edición Contextual Optimista
+ * 
+ * Este patrón define un enfoque consistente para componentes que permiten
+ * edición in-line con feedback visual inmediato (UX Optimistic).
+ * 
+ * Características principales:
+ * 1. Encabezado con título y botón de acción
+ * 2. Transición fluida entre modos de visualización y edición
+ * 3. Feedback visual inmediato durante actualizaciones
+ * 4. Botones de acción consistentes (confirmar/cancelar)
+ * 5. Manejo de estados de error con feedback visual
+ */
+
+/* Contenedor principal del componente editable */
+.eco-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+  background-color: var(--background-color-light);
+  border-radius: var(--border-radius-md);
+  transition: all var(--transition-normal) var(--transition-timing);
+  position: relative;
+}
+
+/* Encabezado con título y botón de acción */
+.eco-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-xs);
+}
+
+.eco-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-dark);
+  margin: 0;
+}
+
+/* Botón para activar el modo de edición */
+.eco-edit-button {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--border-radius-sm);
+  transition: all var(--transition-normal) var(--transition-timing);
+}
+
+.eco-edit-button:hover {
+  background-color: var(--color-primary-light);
+}
+
+.eco-edit-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Contenedor del formulario de edición */
+.eco-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+/* Campos de entrada */
+.eco-input {
+  width: 100%;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: 1px solid var(--border-color-medium);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-sm);
+  transition: border-color var(--transition-normal) var(--transition-timing);
+}
+
+.eco-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.2);
+}
+
+.eco-textarea {
+  width: 100%;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: 1px solid var(--border-color-medium);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-sm);
+  transition: border-color var(--transition-normal) var(--transition-timing);
+  resize: vertical;
+  min-height: 80px;
+  font-family: inherit;
+}
+
+.eco-textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.2);
+}
+
+/* Contenedor de botones de acción */
+.eco-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: flex-end;
+}
+
+/* Botones de acción */
+.eco-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-normal) var(--transition-timing);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.eco-button-confirm {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.eco-button-confirm:hover:not(:disabled) {
+  background-color: var(--color-primary-dark);
+}
+
+.eco-button-confirm:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.eco-button-cancel {
+  background-color: var(--background-color-light);
+  color: var(--color-text-medium);
+  border: 1px solid var(--border-color-medium);
+}
+
+.eco-button-cancel:hover:not(:disabled) {
+  background-color: var(--border-color-light);
+}
+
+/* Estados de actualización y error */
+.eco-updating {
+  opacity: 0.7;
+  position: relative;
+}
+
+.eco-updating::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(to right, var(--color-primary-light), var(--color-primary));
+  animation: eco-progress 1.5s linear infinite;
+}
+
+.eco-error {
+  color: var(--color-error);
+  font-size: var(--font-size-xs);
+  margin: var(--spacing-xs) 0 0;
+}
+
+.eco-updating-text {
+  font-style: italic;
+  color: var(--color-primary);
+  font-size: var(--font-size-xs);
+}
+
+/* Animaciones */
+@keyframes eco-progress {
+  0% {
+    background-position: 0% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+@keyframes eco-pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 0.9; }
+  100% { opacity: 0.6; }
+}

@@ -1,0 +1,90 @@
+/* Estilos para el componente ObservationCityCard basados en el patrón ECO */
+
+.container {
+  composes: eco-container from '../../styles/patterns/eco-pattern.css';
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  padding: var(--spacing-md);
+  border-left: 3px solid var(--color-primary);
+}
+
+.header {
+  composes: eco-header from '../../styles/patterns/eco-pattern.css';
+}
+
+.title {
+  composes: eco-title from '../../styles/patterns/eco-pattern.css';
+}
+
+.editButton {
+  composes: eco-edit-button from '../../styles/patterns/eco-pattern.css';
+}
+
+.form {
+  composes: eco-form from '../../styles/patterns/eco-pattern.css';
+}
+
+.textarea {
+  composes: eco-textarea from '../../styles/patterns/eco-pattern.css';
+}
+
+.error {
+  composes: eco-error from '../../styles/patterns/eco-pattern.css';
+}
+
+.actions {
+  composes: eco-actions from '../../styles/patterns/eco-pattern.css';
+}
+
+.buttonConfirm {
+  composes: eco-button eco-button-confirm from '../../styles/patterns/eco-pattern.css';
+}
+
+.buttonCancel {
+  composes: eco-button eco-button-cancel from '../../styles/patterns/eco-pattern.css';
+}
+
+.content {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-medium);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.updating {
+  composes: eco-updating from '../../styles/patterns/eco-pattern.css';
+}
+
+.updatingText {
+  composes: eco-updating-text from '../../styles/patterns/eco-pattern.css';
+}
+
+.submitting {
+  position: relative;
+  overflow: hidden;
+}
+
+.submitting::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 300%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  animation: submittingAnimation 1.5s infinite;
+}
+
+@keyframes submittingAnimation {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}

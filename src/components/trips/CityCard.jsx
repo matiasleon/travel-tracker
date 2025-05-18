@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './CityCard.module.css';
 import { ActivityList } from '../activities/ActivityList';
+import { ObservationCityCard } from './ObservationCityCard';
 import { CITY_STATUS, getStatusText } from '../../constants/statusTypes';
 import { useNotification } from '../../context/NotificationContext';
 
@@ -109,12 +110,11 @@ export const CityCard = ({
         </span>
       )}
         
-      <div className={styles.observations}>
-        <h4 className={styles.observationsTitle}>Observaciones:</h4>
-        <p className={styles.observationsText}>
-          {localCity.observations ? localCity.observations : <em>Sin observaciones</em>}
-        </p>
-      </div>
+      <ObservationCityCard 
+        city={localCity} 
+        tripId={tripId} 
+        isAdmin={isAdmin} 
+      />
 
       <div className={styles.cityContent}>
         {/* Componente encapsulado para la lista de actividades */}

@@ -274,16 +274,61 @@ export const useTrips = () => {
       }, 500); // Simular latencia de red de 500ms
     });
   }, [trips]);
+  
+  /**
+   * Actualiza las observaciones de una ciudad en un viaje
+   * Implementa el patrón UX Optimistic devolviendo una promesa
+   */
+  const updateCityObservations = useCallback((tripId, cityId, observations) => {
+    return new Promise((resolve, reject) => {
+      // Simular latencia de red
+      setTimeout(() => {
+        try {
+          // Simular posibilidad de error (10% de probabilidad)
+          if (Math.random() < 0.1) {
+            throw new Error('Error de red simulado');
+          }
+          
+          // Actualizar el estado
+          setTrips(prev => prev.map(trip => {
+            if (trip.id === tripId) {
+              return {
+                ...trip,
+                cities: (trip.cities || []).map(city => {
+                  if (city.id === cityId) {
+                    return {
+                      ...city,
+                      observations
+                    };
+                  }
+                  return city;
+                })
+              };
+            }
+            return trip;
+          }));
+          
+          // Resolver la promesa con éxito
+          resolve({ success: true });
+        } catch (error) {
+          console.error('Error al actualizar observaciones:', error);
+          reject(error);
+        }
+      }, 500); // Simular 500ms de latencia
+    });
+  }, []);
 
-  return {
-    trips,
-    loading,
-    createTrip,
-    addActivity,
-    toggleActivity,
-    toggleCityStatus,
-    deleteTrip,
-    addCity,
-    addCityActivity
-  };
+return {
+  trips,
+  loading,
+  createTrip,
+  addActivity,
+  toggleActivity,
+  addCityActivity,
+  toggleCityStatus,
+  updateCityObservations,
+  deleteTrip,
+  addCity,
+  getTrip: (tripId) => trips.find(trip => trip.id === tripId)
+};
 };

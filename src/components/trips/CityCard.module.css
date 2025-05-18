@@ -274,13 +274,22 @@
   background-color: var(--background-color-light);
   border-radius: var(--border-radius-md);
   border-left: 3px solid var(--color-primary);
+  position: relative;
+  transition: all var(--transition-normal) var(--transition-timing);
+}
+
+.observationsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-xs);
 }
 
 .observationsTitle {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
   color: var(--color-text-dark);
-  margin: 0 0 var(--spacing-xs) 0;
+  margin: 0;
 }
 
 .observationsText {
@@ -288,6 +297,71 @@
   color: var(--color-text-medium);
   margin: 0;
   line-height: 1.4;
+}
+
+.editObservationsButton {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--border-radius-sm);
+  transition: all var(--transition-normal) var(--transition-timing);
+}
+
+.editObservationsButton:hover {
+  background-color: var(--color-primary-light);
+}
+
+.editObservationsButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.observationsForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.observationsTextarea {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 1px solid var(--border-color-medium);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-sm);
+  font-family: inherit;
+  resize: vertical;
+  min-height: 80px;
+  transition: border-color var(--transition-normal) var(--transition-timing);
+}
+
+.observationsTextarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.2);
+}
+
+.observationsActions {
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: flex-end;
+}
+
+.observations.updating {
+  opacity: 0.7;
+}
+
+.updatingText {
+  font-style: italic;
+  color: var(--color-primary);
+  font-size: var(--font-size-xs);
 }
 
 .dates {
