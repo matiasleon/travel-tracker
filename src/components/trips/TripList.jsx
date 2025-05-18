@@ -7,7 +7,6 @@ export const TripList = () => {
   const { trips, loading } = useTrips();
 
   useEffect(() => {
-    console.log('TripList re-render:', trips.length, 'viajes');
   }, [trips]);
 
   if (loading) {

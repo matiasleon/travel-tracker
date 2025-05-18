@@ -37,10 +37,6 @@ export const TripDetails = () => {
   
   const trip = trips.find(t => t.id === tripId);
 
-  console.log(user);
-  console.log(trip);
-  
-
   if (!trip) {
     return (
       <Layout>

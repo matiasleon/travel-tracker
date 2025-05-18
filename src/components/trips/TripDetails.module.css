@@ -417,6 +417,12 @@
   z-index: 50;
 }
 
+.modal > div {
+  width: 40%;
+  min-width: 500px;
+  max-width: 800px;
+}
+
 .cityName {
   font-size: 1.25rem;
   font-weight: 500;

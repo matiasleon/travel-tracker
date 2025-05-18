@@ -12,7 +12,7 @@ export const useDateFormat = () => {
   };
 
   const formatDateForInput = (date) => {
-    console.log('Input date:', date);
+
     
     if (!date) return '';
     try {

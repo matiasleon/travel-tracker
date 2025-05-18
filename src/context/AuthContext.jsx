@@ -22,11 +22,11 @@ export const AuthProvider = ({ children }) => {
   const [loading] = useState(false);
 
   const login = () => {
-    console.log('Login deshabilitado - usando usuario mock');
+    // Login deshabilitado - usando usuario mock
   };
 
   const logout = () => {
-    console.log('Logout deshabilitado - usando usuario mock');
+    // Logout deshabilitado - usando usuario mock
   };
 
   const value = {

@@ -19,7 +19,10 @@ export const mockTrips = [
         endDate: '2025-06-20',
         completed: false,
         observations: 'Reservar tour nocturno por el Sena',
-        activities: []
+        activities: [{
+          name: 'Paseo barceloneta',
+          done: false
+        }]
       },
       {
         id: 'city2',
@@ -28,7 +31,9 @@ export const mockTrips = [
         endDate: '2025-06-20',
         completed: false,
         observations: 'Reservar tour nocturno por el Sena',
-        activities: []
+        activities: [
+          
+        ]
       },
       {
         id: 'city3',

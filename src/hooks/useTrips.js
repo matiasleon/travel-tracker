@@ -18,7 +18,6 @@ export const useTrips = () => {
     // Agregar el nuevo viaje manteniendo los mocks y los viajes previos
     setTrips(prev => {
       const newState = [...mockTrips, ...prev.filter(t => !mockTrips.find(m => m.id === t.id)), newTrip];
-      console.log('Estado actualizado:', newState);
       return newState;
     });
 
@@ -27,7 +26,6 @@ export const useTrips = () => {
 
   const addActivity = useCallback((tripId, activityName) => {
     if (!activityName || !tripId) {
-      console.log('Error: Actividad o ID de viaje no válidos');
       return;
     }
     setTrips(prev => prev.map(trip => {
@@ -36,7 +34,7 @@ export const useTrips = () => {
           ...trip,
           activities: [...(trip.activities || []), {
             name: activityName,
-            completed: false
+            done: false
           }]
         };
       }
@@ -44,19 +42,27 @@ export const useTrips = () => {
     }));
   }, []);
 
-  const toggleActivity = (tripId, activityIndex) => {
+  const toggleActivity = useCallback((tripId, cityId, activityIndex) => {
     setTrips(prevTrips => prevTrips.map(trip => {
       if (trip.id === tripId) {
-        const updatedActivities = [...trip.activities];
-        updatedActivities[activityIndex] = {
-          ...updatedActivities[activityIndex],
-          completed: !updatedActivities[activityIndex]?.completed
+        return {
+          ...trip,
+          cities: trip.cities.map(city => {
+            if (city.id === cityId) {
+              const updatedActivities = [...city.activities];
+              updatedActivities[activityIndex] = {
+                ...updatedActivities[activityIndex],
+                done: !updatedActivities[activityIndex]?.done
+              };
+              return { ...city, activities: updatedActivities };
+            }
+            return city;
+          })
         };
-        return { ...trip, activities: updatedActivities };
       }
       return trip;
     }));
-  };
+  }, []);
 
   const addCity = (tripId, cityData) => {
     setTrips(prevTrips => prevTrips.map(trip => {

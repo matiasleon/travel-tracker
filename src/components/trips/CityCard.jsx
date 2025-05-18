@@ -2,6 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './CityCard.module.css';
 
+import { useTrips } from '../../hooks/useTrips';
+
 export const CityCard = ({ 
   city, 
   tripId, 
@@ -12,6 +14,7 @@ export const CityCard = ({
   totalCities 
 }) => {
   const navigate = useNavigate();
+  const { toggleActivity } = useTrips();
 
   return (
     <div className={styles.cityCard}>
@@ -52,9 +55,15 @@ export const CityCard = ({
       )}
 
       <div className={styles.activities}>
-        {city.activities?.map((activity) => (
-          <div key={activity.id} className={styles.activity}>
-            {activity.name}
+        {city.activities?.length > 0 && (
+          <h4 className={styles.activitiesTitle}>Actividades:</h4>
+        )}
+        {city.activities?.map((activity, index) => (
+          <div key={index} className={`${styles.activity} ${activity.done ? styles.activityDone : ''}`}>
+            <span className={styles.activityCheckbox} onClick={() => isAdmin && toggleActivity(tripId, city.id, index)}>
+              {activity.done ? '✓' : ''}
+            </span>
+            <span className={styles.activityName}>{activity.name}</span>
           </div>
         ))}
       </div>

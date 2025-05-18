@@ -45,7 +45,75 @@
   box-shadow: 0 0 0 2px rgb(59 130 246);
 }
 
+.textarea {
+  padding: 0.5rem;
+  border: 1px solid rgb(209 213 219);
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  resize: vertical;
+  min-height: 80px;
+}
 
+.textarea:focus {
+  outline: none;
+  border-color: rgb(59 130 246);
+  box-shadow: 0 0 0 2px rgb(59 130 246);
+}
+
+.activityInput {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.activityInput .input {
+  flex: 1;
+}
+
+.addActivityButton {
+  padding: 0.5rem 0.75rem;
+  background-color: rgb(59 130 246);
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.addActivityButton:hover {
+  background-color: rgb(37 99 235);
+}
+
+.activityList {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0 0;
+}
+
+.activityItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  background-color: rgb(243 244 246);
+  border-radius: 0.375rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.removeActivityButton {
+  background: none;
+  border: none;
+  color: rgb(156 163 175);
+  font-size: 1.125rem;
+  cursor: pointer;
+  padding: 0 0.25rem;
+}
+
+.removeActivityButton:hover {
+  color: rgb(239 68 68);
+}
 
 .buttonGroup {
   display: flex;
