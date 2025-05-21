@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useTrips } from '../hooks/useTrips';
-import { LoginButton } from './auth/LoginButton';
-import { TripForm } from './trips/TripForm';
-import { TripList } from './trips/TripList';
 import { Layout } from './layout/Layout';
+import { LoginButton } from './auth/LoginButton';
+import { TripList } from './trips/TripList';
+import { TripForm } from './trips/TripForm';
 import styles from './Home.module.css';
+// Importamos iconos de Lucide
+import { PlusCircle, MapPin, Globe } from 'lucide-react';
 import commonStyles from '../styles/common.module.css';
 
 export const Home = () => {
@@ -40,14 +43,17 @@ export const Home = () => {
         <div className={styles.dashboardContainer}>
           <div className={styles.dashboardHeader}>
             <div className={styles.dashboardHeaderContent}>
-              <h1 className={styles.dashboardTitle}>Mis Viajes</h1>
+              <h1 className={styles.dashboardTitle}>
+                <Globe size={24} className={styles.titleIcon} /> 
+                Mis Viajes
+              </h1>
               <p className={styles.dashboardSubtitle}>Organiza y planifica tus próximas aventuras</p>
             </div>
             <button 
               className={styles.createTripButton}
               onClick={() => setShowCreateForm(true)}
             >
-              <span className={styles.buttonIcon}>+</span>
+              <span className={styles.buttonIcon}><PlusCircle size={16} /></span>
               <span>Nuevo Viaje</span>
             </button>
           </div>

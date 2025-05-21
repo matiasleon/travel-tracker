@@ -126,13 +126,6 @@ export const TripItem = ({ trip }) => {
             )}
           </div>
         </div>
-
-        {/* Mostrar un resumen cuando se hace hover */}
-        {isHovered && (
-          <div className={styles.hoverSummary}>
-            <TripSummary trip={trip} />
-          </div>
-        )}
       </div>
     </Link>
   );

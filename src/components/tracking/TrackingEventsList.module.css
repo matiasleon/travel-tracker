@@ -1,0 +1,117 @@
+.container {
+  width: 100%;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.eventsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.eventItem {
+  display: flex;
+  padding: 1rem 0;
+  animation: fadeIn 0.3s ease;
+  position: relative;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.eventIconContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 1rem;
+  position: relative;
+}
+
+.eventIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(var(--color-primary-rgb), 0.1);
+  color: var(--color-primary);
+  flex-shrink: 0;
+  z-index: 2;
+}
+
+.eventConnector {
+  position: absolute;
+  top: 36px;
+  bottom: -16px;
+  width: 2px;
+  background-color: #e5e7eb;
+  z-index: 1;
+}
+
+.eventItem:last-child .eventConnector {
+  display: none;
+}
+
+.eventContent {
+  flex: 1;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
+}
+
+.eventContent:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+}
+
+.eventHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.eventType {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  background-color: rgba(var(--color-primary-rgb), 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.eventDate {
+  font-size: 0.75rem;
+  color: var(--color-text-medium);
+}
+
+.eventMessage {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-text-dark);
+  margin: 0.5rem 0;
+}
+
+.eventLocation {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--color-text-medium);
+  margin-top: 0.5rem;
+}
+
+.noEvents {
+  text-align: center;
+  padding: 2rem;
+  color: var(--color-text-medium);
+  font-style: italic;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  border: 1px dashed #e5e7eb;
+}

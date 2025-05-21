@@ -1,43 +1,48 @@
 .cityCard {
   background: white;
-  border: 1px solid var(--border-color-light);
+  border: none; /* Eliminamos el borde */
   border-radius: var(--border-radius-lg);
-  padding: var(--spacing-lg);
+  padding: var(--spacing-xl);
   position: relative;
   width: 100%;
-  box-shadow: var(--box-shadow-sm);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Sombra suave */
   z-index: 1;
   transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  margin-bottom: var(--spacing-lg);
 }
 
 .cityCard:hover {
   transform: translateY(-2px);
-  box-shadow: var(--box-shadow-md);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12); /* Sombra más pronunciada al hover */
 }
 
 .cityHeader {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  margin-bottom: var(--spacing-sm);
-  border-bottom: 1px solid var(--border-color-medium);
-  padding-bottom: 0.75rem;
+  gap: 1rem;
+  margin-bottom: var(--spacing-md);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06); /* Borde más sutil */
+  padding-bottom: var(--spacing-md);
 }
 
 .cityName {
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-xl); /* Título más grande */
+  font-weight: var(--font-weight-bold);
   color: var(--color-text-dark);
   margin: 0;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  line-height: 1.2;
 }
 
 .dateGroup {
   display: flex;
   align-items: center;
   gap: var(--spacing-xs);
+  background-color: rgba(var(--color-primary-rgb), 0.05);
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
 }
 
 .dateLabel {
@@ -47,31 +52,47 @@
 }
 
 .dateValue {
-  color: var(--color-primary);
+  color: var(--color-text-dark);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
+}
+
+.upNext {
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--color-primary);
+  color: white;
+  padding: 0.25rem 1rem;
+  border-radius: 9999px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(var(--color-primary-rgb), 0.3);
 }
 
 .checkbox {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
-  border: var(--border-width-thin) solid var(--border-color-medium);
-  border-radius: var(--border-radius-sm);
-  margin-right: var(--spacing-sm);
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--color-primary-light);
+  border-radius: 50%; /* Checkbox circular */
   cursor: pointer;
   transition: all var(--transition-normal) var(--transition-timing);
   flex-shrink: 0;
   position: relative;
   color: white;
+  background-color: transparent;
 }
 
 .checkbox.checked {
   background-color: var(--color-primary);
   border-color: var(--color-primary);
   color: var(--color-text-light);
+  box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.2);
 }
 
 .checkbox:hover {
@@ -85,13 +106,15 @@
 }
 
 .activitiesTitle {
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-md);
   font-weight: var(--font-weight-semibold);
   color: var(--color-text-dark);
   margin: 0;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: var(--spacing-sm);
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .addActivityButton {
@@ -267,6 +290,10 @@
   color: var(--color-text-light);
 }
 
+.cityContent {
+  margin-top: var(--spacing-lg);
+}
+
 .observations {
   margin-top: var(--spacing-md);
   margin-bottom: var(--spacing-md);
@@ -366,17 +393,21 @@
 
 .dates {
   display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xs);
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
   margin-top: var(--spacing-xs);
 }
 
 .completedAt {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: var(--font-size-xs);
   color: var(--color-success);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  display: block;
-  margin-top: var(--spacing-xs);
+  margin-bottom: var(--spacing-sm);
+  background-color: rgba(var(--color-success-rgb), 0.1);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
 }
 
 .cityActions {
@@ -413,19 +444,16 @@
   box-shadow: 0 2px 4px -1px rgb(0 0 0 / 0.1);
 }
 
-.upNext {
-  position: absolute;
-  bottom: -2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--color-text-light);
-  font-family: 'Segoe Script', cursive;
-  font-size: 1.2rem;
-  background-color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 1rem;
-  white-space: nowrap;
-  z-index: 2;
+.cityStatus {
+  font-size: var(--font-size-xs);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px; /* Etiqueta redondeada (rounded-full) */
+  margin-left: auto;
+  font-weight: var(--font-weight-medium);
+  display: inline-flex;
+  align-items: center;
+  background-color: #f3f4f6; /* bg-gray-100 */
+  color: #4b5563; /* text-gray-600 */
 }
 
 /* Estilos para las badges de estado */
@@ -435,35 +463,17 @@
   padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: var(--border-radius-full);
   font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-medium);
   margin-left: var(--spacing-sm);
 }
 
-.PLANNED {
-  background-color: rgba(59, 130, 246, 0.1);
-  color: var(--color-info);
-}
-
-.IN_PROGRESS {
-  background-color: rgba(245, 158, 11, 0.1);
-  color: var(--color-warning-dark);
-}
-
-.COMPLETED {
-  background-color: rgba(16, 185, 129, 0.1);
-  color: var(--color-success);
-}
-
-.CANCELLED {
-  background-color: rgba(239, 68, 68, 0.1);
-  color: var(--color-error);
-}
-
+/* Eliminamos los estilos específicos por estado ya que ahora usamos un estilo unificado para las etiquetas */
 /* Estilos para ciudades en proceso de actualización */
 .cityCard.updating {
   position: relative;
   background-color: rgba(249, 250, 251, 0.7);
   transition: background-color 0.3s ease;
+  box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.2), 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 .updating {

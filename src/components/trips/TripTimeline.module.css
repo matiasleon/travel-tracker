@@ -1,0 +1,266 @@
+.timelineContainer {
+  width: 100%;
+  margin: 2rem 0;
+  padding: 1rem;
+  background-color: white;
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.timeline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) transparent;
+}
+
+.timeline::-webkit-scrollbar {
+  height: 4px;
+}
+
+.timeline::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.timeline::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary);
+  border-radius: 20px;
+}
+
+.timelineCity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: fit-content;
+  position: relative;
+  padding: 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.timelineCity:hover {
+  background-color: rgba(var(--color-primary-rgb), 0.05);
+}
+
+.timelineCity.selected {
+  background-color: rgba(var(--color-primary-rgb), 0.1);
+  box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+.cityPoint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: white;
+  color: var(--color-text-medium);
+  border: 2px solid var(--color-text-medium);
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.cityDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.cityName {
+  font-family: 'DM Sans', sans-serif;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-dark);
+  text-align: center;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cityStatus {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.7rem;
+  color: var(--color-text-medium);
+}
+
+.statusIcon {
+  color: var(--color-text-medium);
+}
+
+.timelineConnector {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 60px;
+  position: relative;
+}
+
+.line {
+  flex: 1;
+  height: 2px;
+  background-color: var(--color-text-medium);
+  position: relative;
+}
+
+.arrow {
+  position: absolute;
+  right: -8px;
+  color: var(--color-text-medium);
+}
+
+.completed .cityPoint {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+  box-shadow: 0 0 0 4px rgba(var(--color-primary-rgb), 0.2);
+}
+
+.completed .cityName {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.inProgress .cityPoint {
+  background-color: #f59e0b;
+  border-color: #f59e0b;
+  color: white;
+  box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.2);
+}
+
+.inProgress .cityName {
+  color: #f59e0b;
+  font-weight: var(--font-weight-semibold);
+}
+
+.eventIndicator {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ef4444;
+  box-shadow: 0 0 0 2px white;
+}
+
+.emptyTimeline {
+  text-align: center;
+  padding: 2rem;
+  color: var(--color-text-medium);
+  font-style: italic;
+}
+
+/* Estilos para la sección de eventos */
+.eventsContainer {
+  background-color: #f8fafc;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1rem;
+  border: 1px solid #e5e7eb;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.eventsTitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.eventsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.eventsList::-webkit-scrollbar {
+  width: 4px;
+}
+
+.eventsList::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.eventsList::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary);
+  border-radius: 20px;
+}
+
+.eventItem {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background-color: white;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
+}
+
+.eventItem:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+.eventIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: rgba(var(--color-primary-rgb), 0.1);
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.eventContent {
+  flex: 1;
+}
+
+.eventDate {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--color-text-medium);
+  margin-bottom: 0.25rem;
+}
+
+.eventMessage {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--color-text-dark);
+  margin: 0;
+}
+
+.noEvents {
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--color-text-medium);
+  font-style: italic;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  border: 1px dashed #e5e7eb;
+  animation: fadeIn 0.3s ease;
+}

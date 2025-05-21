@@ -39,16 +39,28 @@
 .createTripButton {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  background-color: #0284c7;
+  gap: 0.75rem;
+  background-color: var(--color-primary);
   color: white;
   border: none;
-  padding: 0.75rem 1.25rem;
-  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
   font-weight: 600;
   transition: all 0.2s ease;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.25);
   letter-spacing: -0.01em;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.createTripButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(var(--color-primary-rgb), 0.35);
+}
+
+.createTripButton:active {
+  transform: translateY(1px);
 }
 
 .fab {
@@ -187,17 +199,68 @@
   padding: 1.5rem;
 }
 
+.dashboardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 1.5rem 2rem;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.dashboardHeader::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: var(--color-primary);
+}
+
 .dashboardHeaderContent {
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 1;
 }
 
 .dashboardTitle {
   font-size: 1.75rem;
   font-weight: 700;
-  color: #0c4a6e;
-  margin: 0;
+  color: var(--color-text-dark);
+  margin: 0 0 0.25rem 0;
   letter-spacing: -0.03em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.titleIcon {
+  color: var(--color-primary);
+}
+
+.dashboardSubtitle {
+  color: var(--color-text-medium);
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 400;
+}
+
+.buttonIcon {
+  font-size: 1.25rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
 }
 
 .tripsContainer {

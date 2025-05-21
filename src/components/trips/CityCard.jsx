@@ -5,6 +5,8 @@ import { ActivityList } from '../activities/ActivityList';
 import { ObservationCityCard } from './ObservationCityCard';
 import { CITY_STATUS, getStatusText } from '../../constants/statusTypes';
 import { useNotification } from '../../context/NotificationContext';
+// Importamos iconos de Lucide
+import { Check, Calendar, MapPin, Clock, ChevronRight } from 'lucide-react';
 
 export const CityCard = ({ 
   city, 
@@ -75,6 +77,7 @@ export const CityCard = ({
   
   return (
     <div className={`${styles.cityCard} ${isUpdating ? styles.updating : ''}`}>
+      {/* Encabezado: nombre de ciudad + status + fechas */}
       <div className={styles.cityHeader}>
         <h3 className={styles.cityName}>
           <span 
@@ -83,41 +86,48 @@ export const CityCard = ({
             role="checkbox"
             aria-checked={localCity.status === CITY_STATUS.COMPLETED}
           >
-            {localCity.status === CITY_STATUS.COMPLETED ? '\u2713' : ''}
+            {localCity.status === CITY_STATUS.COMPLETED ? <Check size={16} /> : ''}
             {isUpdating && <span className={styles.spinner}></span>}
           </span>
           {localCity.name}
-          <span className={`${styles.cityStatus} ${styles[localCity.status || CITY_STATUS.PLANNED]}`}>
+          <span className={styles.cityStatus}>
             {getStatusText(localCity.status, 'city')}
             {isUpdating && <span className={styles.statusUpdating}> (actualizando...)</span>}
           </span>
         </h3>
+        
         <div className={styles.dates}>
           <div className={styles.dateGroup}>
+            <Calendar size={14} />
             <span className={styles.dateLabel}>Inicio:</span>
             <span className={styles.dateValue}>{formatDate(localCity.startDate)}</span>
           </div>
           <div className={styles.dateGroup}>
+            <Calendar size={14} />
             <span className={styles.dateLabel}>Fin:</span>
             <span className={styles.dateValue}>{formatDate(localCity.endDate)}</span>
           </div>
         </div>
-      </div>
-      {updateError && <div className={styles.errorMessage}>{updateError}</div>}
-      {city.status === CITY_STATUS.COMPLETED && city.completedAt && (
-        <span className={styles.completedAt}>
-          Completado: {new Date(city.completedAt).toLocaleDateString()}
-        </span>
-      )}
         
+        {city.status === CITY_STATUS.COMPLETED && city.completedAt && (
+          <span className={styles.completedAt}>
+            <Check size={14} />
+            Completado: {new Date(city.completedAt).toLocaleDateString()}
+          </span>
+        )}
+      </div>
+      
+      {updateError && <div className={styles.errorMessage}>{updateError}</div>}
+      
+      {/* Notas / observaciones (estilo textarea colapsable) */}
       <ObservationCityCard 
         city={localCity} 
         tripId={tripId} 
         isAdmin={isAdmin} 
       />
 
+      {/* Actividades (chips o lista interactiva) */}
       <div className={styles.cityContent}>
-        {/* Componente encapsulado para la lista de actividades */}
         <ActivityList 
           activities={localCity.activities || []}
           tripId={tripId}
@@ -125,10 +135,6 @@ export const CityCard = ({
           isAdmin={isAdmin}
         />
       </div>
-      
-      {index < totalCities - 1 && (
-        <div className={styles.upNext}>Up next</div>
-      )}
     </div>
   );
 };

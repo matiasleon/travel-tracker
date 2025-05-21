@@ -15,3 +15,4 @@ trigger: always_on
 - Utilizar el patrón ECO (Edición Contextual Optimista) para todos los componentes editables
 - Mantener la consistencia visual con las variables CSS centralizadas
 - Implementar UX Optimistic para todas las operaciones de actualización
+- Cuando se pida un feature primero analiza que habria que hacer, que modificar y hacerlo en pasos chicos para hacer la review

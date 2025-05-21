@@ -1,0 +1,491 @@
+/* Estilos para la vista compartida del viaje */
+:root {
+  --color-primary: #0ea5e9;
+  --color-primary-dark: #0284c7;
+  --color-secondary: #f59e0b;
+  --color-text-primary: #334155;
+  --color-text-secondary: #64748b;
+  --color-background: #f8fafc;
+  --color-card-background: #ffffff;
+  --color-border: #e2e8f0;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.sharedTripContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+  min-height: 100vh;
+}
+
+/* Estilos del encabezado */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  background-color: var(--color-card-background);
+  border-radius: var(--border-radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+@media (min-width: 768px) {
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.tripInfo {
+  flex: 1;
+}
+
+.tripName {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.tripDestination {
+  font-size: 1.25rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tripDates {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tripImage {
+  width: 100%;
+  max-width: 300px;
+  height: 200px;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+}
+
+.tripImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Estilos de las pestañas */
+.tabsContainer {
+  background-color: var(--color-card-background);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--color-border);
+  background-color: #f1f5f9;
+}
+
+.tabButton {
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tabButton:hover {
+  color: var(--color-primary);
+}
+
+.tabButton.active {
+  color: var(--color-primary);
+}
+
+.tabButton.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--color-primary);
+}
+
+.tabContent {
+  padding: 2rem;
+}
+
+/* Estilos de la pestaña de resumen */
+.summaryTab,
+.trackingTab {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.tripNotes {
+  padding: 1.5rem;
+  background-color: #f8fafc;
+  border-radius: var(--border-radius-md);
+  border-left: 4px solid var(--color-secondary);
+}
+
+.tripNotes h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--color-text-primary);
+}
+
+.tripTimeline {
+  margin-top: 2rem;
+}
+
+.tripTimeline h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--color-text-primary);
+}
+
+/* Estilos de la pestaña de ciudades */
+.citiesTab h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-text-primary);
+}
+
+.citiesList {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .citiesList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.cityCard {
+  background-color: #f8fafc;
+  border-radius: var(--border-radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+}
+
+.cityHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.cityName {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.cityStatus {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  text-transform: uppercase;
+}
+
+.cityStatus.planned {
+  background-color: #dbeafe;
+  color: #2563eb;
+}
+
+.cityStatus.in_progress {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+.cityStatus.completed {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+.cityDates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+.dateLabel {
+  font-weight: 600;
+  margin-right: 0.25rem;
+}
+
+.cityObservations {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--color-border);
+}
+
+.cityObservations h4 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-primary);
+}
+
+.cityActivities h4 {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  color: var(--color-text-primary);
+}
+
+.activitiesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.activityItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color 0.2s ease;
+}
+
+.activityItem:last-child {
+  border-bottom: none;
+}
+
+.activityItem:hover {
+  background-color: #f1f5f9;
+}
+
+.activityItem.completed .activityName {
+  text-decoration: line-through;
+  color: var(--color-text-secondary);
+}
+
+.activityName {
+  font-weight: 500;
+}
+
+.activityStatus {
+  font-size: 0.75rem;
+  padding: 0.125rem 0.375rem;
+  border-radius: 9999px;
+  background-color: #f1f5f9;
+  color: var(--color-text-secondary);
+}
+
+.noActivities {
+  font-style: italic;
+  color: var(--color-text-secondary);
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Estilos de la pestaña de actualizaciones */
+.updatesTab h2,
+.trackingTab h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-primary);
+}
+
+.trackingDescription {
+  color: var(--color-text-secondary);
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.trackingHeader {
+  margin-bottom: 1.5rem;
+}
+
+.timelineSection,
+.eventsSection {
+  margin-bottom: 2rem;
+}
+
+.sectionTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 1rem;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* Estilos para la tarjeta de estado del viaje */
+.tripStatusCard {
+  background-color: #f0f9ff;
+  border-radius: var(--border-radius-md);
+  padding: 1.5rem;
+  border-left: 4px solid var(--color-primary);
+  margin-bottom: 1.5rem;
+}
+
+.statusHeader {
+  margin-bottom: 1rem;
+}
+
+.statusHeader h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.statusContent {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.statusItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.statusLabel {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+.statusValue {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+/* Estados de viaje */
+.planning {
+  color: var(--color-primary);
+}
+
+.ongoing {
+  color: var(--color-warning);
+}
+
+.completed {
+  color: var(--color-success);
+}
+
+.cancelled {
+  color: var(--color-error);
+}
+
+.updatesList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.updateItem {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #f8fafc;
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.updateIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #e0f2fe;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.updateContent {
+  flex: 1;
+}
+
+.updateDate {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.updateText {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+}
+
+.noUpdates {
+  font-style: italic;
+  color: var(--color-text-secondary);
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Estados de carga y error */
+.loading, .notFound {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  font-size: 1.25rem;
+  color: var(--color-text-secondary);
+}
+
+.notFound {
+  color: var(--color-error);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 1.5rem;
+  border-top: 1px solid var(--color-border);
+  margin-top: 2rem;
+}
+
+.sharedInfo {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}

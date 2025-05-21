@@ -110,7 +110,7 @@
   background-size: contain;
   border: var(--border-width-thin) solid var(--border-color-medium);
   appearance: none;
-  color-adjust: exact;
+  print-color-adjust: exact;
   transition: background-color var(--transition-normal) var(--transition-timing),
               border-color var(--transition-normal) var(--transition-timing);
 }

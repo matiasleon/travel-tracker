@@ -5,15 +5,14 @@
 
 // Estados para actividades
 export const ACTIVITY_STATUS = {
-  PLANNED: 'planned',
-  IN_PROGRESS: 'in_progress',
+  PENDING: 'pending',
   COMPLETED: 'completed',
   CANCELLED: 'cancelled'
 };
 
 // Estados para ciudades
 export const CITY_STATUS = {
-  PLANNED: 'planned',
+  PENDING: 'pending',
   IN_PROGRESS: 'in_progress',
   COMPLETED: 'completed',
   CANCELLED: 'cancelled'
@@ -32,14 +31,13 @@ export const getStatusText = (status, entityType = 'generic') => {
   const statusTexts = {
     // Textos para actividades
     activity: {
-      [ACTIVITY_STATUS.PLANNED]: 'Planificada',
-      [ACTIVITY_STATUS.IN_PROGRESS]: 'En progreso',
+      [ACTIVITY_STATUS.PENDING]: 'Pendiente',
       [ACTIVITY_STATUS.COMPLETED]: 'Completada',
       [ACTIVITY_STATUS.CANCELLED]: 'Cancelada'
     },
     // Textos para ciudades
     city: {
-      [CITY_STATUS.PLANNED]: 'Planificada',
+      [CITY_STATUS.PENDING]: 'Pendiente',
       [CITY_STATUS.IN_PROGRESS]: 'En progreso',
       [CITY_STATUS.COMPLETED]: 'Completada',
       [CITY_STATUS.CANCELLED]: 'Cancelada'
@@ -53,10 +51,10 @@ export const getStatusText = (status, entityType = 'generic') => {
     },
     // Textos genéricos (fallback)
     generic: {
-      [ACTIVITY_STATUS.PLANNED]: 'Planificado/a',
-      [ACTIVITY_STATUS.IN_PROGRESS]: 'En progreso',
+      [ACTIVITY_STATUS.PENDING]: 'Pendiente',
+      [CITY_STATUS.IN_PROGRESS]: 'En progreso',
       [ACTIVITY_STATUS.COMPLETED]: 'Completado/a',
-      [ACTIVITY_STATUS.CANCELLED]: 'Cancelado/a'
+      [CITY_STATUS.CANCELLED]: 'Cancelado/a'
     }
   };
 
