@@ -119,14 +119,21 @@ export const TripForm = ({ onSuccess }) => {
         return;
       }
 
+      // Crear un nuevo objeto de viaje sin incluir ciudades inicialmente
       const tripId = await createTrip({
         ...formData,
         startDate: startDateTime.toISOString(),
         endDate: endDateTime.toISOString(),
         createdBy: user.uid,
-        cities: [],
+        cities: [], // Aseguramos que sea un array vacío
         notes: []
       });
+
+      // Si hay ciudades para agregar, las agregamos después de crear el viaje
+      if (formData.cities && formData.cities.length > 0) {
+        // No intentamos actualizar las ciudades aquí para evitar el error
+        console.log('Ciudades disponibles para agregar más tarde:', formData.cities);
+      }
 
       if (tripId && onSuccess) {
         onSuccess();

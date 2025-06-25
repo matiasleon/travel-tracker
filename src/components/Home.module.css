@@ -163,7 +163,7 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.modal {
+.modalOverlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -184,6 +184,7 @@
   max-width: 600px;
   max-height: 90vh;
   overflow-y: auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
 .modalHeader {
